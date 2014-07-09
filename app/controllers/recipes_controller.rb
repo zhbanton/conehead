@@ -6,15 +6,24 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes.order(:name)
   end
 
+  def show
+    @recipe = recipe(params[:id])
+  end
+
   def new
     @recipe = current_user.recipes.new
   end
 
   def create
     @recipe = current_user.recipes.new(recipe_params)
-    @recipe.save!
+    if @recipe.save
+      redirect_to recipes_path, notice: 'Recipe Created'
+    else
+      flash.now[:alert] = @recipe.errors.full_messages.join(', ')
+      render :new
+    end
 
-    redirect_to recipes_path
+
   end
 
   private
