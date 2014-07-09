@@ -28,6 +28,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipes_path, notice: "You have updated the #{@recipe.name}"
+    else
+      flash.now[:alert] = @recipe.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
   private
 
   def recipe_params
