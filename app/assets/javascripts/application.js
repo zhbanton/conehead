@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require cocoon
+var i = 1;
+function addLine()
+{
+    i++;
+    var div = document.createElement('div');
+    div.innerHTML = '<input type="text" name="quantity'+i+'"><input type = "text" name= "measurement'+i+'"><input type="text" name="ingredient'+i+'">'
+    div.innerHTML +='<input type="button" id="add_line()" onClick="addLine()" value="+"><input type="button" value="-" onClick="removeLine(this)">';
+    document.getElementById('lines').appendChild(div);
+}
+
+function removeLine(div)
+{
+    document.getElementById('lines').removeChild(div.parentNode);
+}
