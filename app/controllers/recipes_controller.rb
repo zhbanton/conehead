@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = recipe(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -22,8 +22,10 @@ class RecipesController < ApplicationController
       flash.now[:alert] = @recipe.errors.full_messages.join(', ')
       render :new
     end
+  end
 
-
+  def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   private
