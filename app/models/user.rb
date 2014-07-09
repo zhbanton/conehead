@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  BATCH_SIZE = 12000
+
   has_many :recipes, dependent: :destroy
   has_many :ingredients, dependent: :destroy
 

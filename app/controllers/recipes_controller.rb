@@ -1,17 +1,17 @@
 class RecipesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
     @recipes = current_user.recipes.order(:name)
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
-
   def new
     @recipe = current_user.recipes.new
+  end
+
+  def show
+    @recipe = @recipe.to_batch_size
   end
 
   def create
@@ -24,12 +24,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def edit
-    @recipe = Recipe.find(params[:id])
-  end
-
   def update
-    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipes_path, notice: "You have updated the recipe for #{@recipe.name}"
     else
@@ -39,9 +34,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
     @recipe.destroy
-
     redirect_to recipes_path, notice: "You have deleted the recipe for #{@recipe.name}"
   end
 
@@ -49,6 +42,10 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :note, :user_id, recipe_entries_attributes: [:id, :quantity, :recipe_id, :ingredient_id, ingredient_attributes: [:id, :name, :user_id]])
+  end
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 
 end

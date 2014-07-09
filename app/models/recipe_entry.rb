@@ -1,4 +1,5 @@
 class RecipeEntry < ActiveRecord::Base
+
   belongs_to :ingredient
   belongs_to :recipe
 
@@ -11,4 +12,5 @@ class RecipeEntry < ActiveRecord::Base
     ingredient = Ingredient.find_or_create_by(name: ingredient_attributes[:name].downcase, user_id: ingredient_attributes[:user_id])
     self.ingredient_id = ingredient.id
   end
+
 end
