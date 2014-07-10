@@ -3,7 +3,7 @@ class ProductionSchedulesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @production_schedules = current_user.production_schedules.order(:starting_date :desc)
+    @production_schedules = current_user.production_schedules.order(starting_date: :desc)
   end
 
   def new
