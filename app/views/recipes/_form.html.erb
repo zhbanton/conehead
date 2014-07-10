@@ -1,21 +1,21 @@
-  <%= form_for @recipe do |recipe| %>
-    <div class="field">
-      <%= recipe.label :name %><br>
-      <%= recipe.text_field :name %>
-    </div>
-    <fieldset id="recipe-ingredients">
-      <ol>
-        <%= recipe.fields_for :recipe_entries do |entry| %>
-          <%= render 'recipe_entry_fields', f: entry %>
-        <% end %>
-      </ol>
-      <%= link_to_add_association 'add ingredient', recipe, :recipe_entries, 'data-association-insertion-node' => "#recipe-ingredients ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new { |recipe_entry| recipe_entry.build_ingredient; recipe_entry } %>
-    </fieldset>
-    <div class="field">
-      <%= recipe.label :note %><br>
-      <%= recipe.text_area :note %>
-    </div>
-    <div class="actions">
-      <%= recipe.submit %>
-    </div>
-  <% end %>
+<%= form_for @recipe do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <fieldset id="recipe-ingredients">
+    <ol>
+      <%= f.fields_for :recipe_entries do |entry| %>
+        <%= render 'recipe_entry_fields', f: entry %>
+      <% end %>
+    </ol>
+    <%= link_to_add_association 'add ingredient', f, :recipe_entries, 'data-association-insertion-node' => "#recipe-ingredients ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new { |recipe_entry| recipe_entry.build_ingredient; recipe_entry } %>
+  </fieldset>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

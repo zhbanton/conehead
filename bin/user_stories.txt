@@ -1,0 +1,28 @@
+    As a user,
+    When I visit the main page
+    I want to be able to see a list of all my recipes in alphabetical order.
+
+As a user,
+When I visit the main page
+I should be able to click a link to create a new recipe
+
+As a user,
+When I visit the main page
+I want to be able to sort my recipes the date they were last created/updated.
+
+  As a user,
+  When I click on a recipe name,
+  I want to be able to view that recipe.
+
+As a user,
+When I am viewing a recipe,
+I want to be able to click a link that will take me to a page to update the recipe
+So I can change my recipes if needed.
+
+As a user,
+When I am viewing a recipe,
+I want to be able to click a button that will delete it.
+
+  As a user,
+  When I delete my account,
+  I want my recipes and inrgedients to disappear

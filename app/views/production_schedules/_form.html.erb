@@ -1,0 +1,21 @@
+<%= form_for @production_schedule do |f| %>
+  <div class="field">
+    <%= f.label :starting_date %>
+    <%= f.date_select :starting_date %>
+  </div>
+  <div class="field">
+    <%= f.label :ending_date %>
+    <%= f.date_select :ending_date %>
+  </div>
+  <fieldset id="production-schedule-entries">
+    <ol>
+      <%= f.fields_for :production_schedule_entries do |entry| %>
+        <%= render 'production_schedule_entry_fields', f: entry %>
+      <% end %>
+    </ol>
+    <%= link_to_add_association 'add recipe', f, :production_schedule_entries, 'data-association-insertion-node' => "#production-schedule-entries ol", 'data-association-insertion-method' => "append" %>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

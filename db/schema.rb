@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709210133) do
+ActiveRecord::Schema.define(version: 20140710153614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140709210133) do
   add_index "ingredients", ["user_id"], name: "index_ingredients_on_user_id", using: :btree
 
   create_table "production_schedule_entries", force: true do |t|
-    t.decimal  "batch_quantity"
+    t.decimal  "quantity"
     t.integer  "production_schedule_id"
     t.integer  "recipe_id"
     t.datetime "created_at"
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 20140709210133) do
   add_index "production_schedule_entries", ["recipe_id"], name: "index_production_schedule_entries_on_recipe_id", using: :btree
 
   create_table "production_schedules", force: true do |t|
-    t.date     "production_date"
+    t.date     "starting_date"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "ending_date"
   end
 
   add_index "production_schedules", ["user_id"], name: "index_production_schedules_on_user_id", using: :btree

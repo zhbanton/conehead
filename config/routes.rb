@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :recipes
 
+  resources :production_schedules
+
   root 'recipes#index'
 end
