@@ -1,6 +1,6 @@
 class Recipe < ActiveRecord::Base
 
-  before_create :quantity_to_zero
+  before_create :quantity_to_zero, :capitalize
   belongs_to :user
   has_many :recipe_entries, dependent: :destroy
   has_many :ingredients, through: :recipe_entries
@@ -30,6 +30,10 @@ class Recipe < ActiveRecord::Base
         entry.quantity = 0
       end
     end
+  end
+
+  def capitalize
+    name.split.map(&:capitalize).join(' ')
   end
 
 end

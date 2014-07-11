@@ -5,6 +5,7 @@ class ProductionSchedule < ActiveRecord::Base
   accepts_nested_attributes_for :production_schedule_entries, reject_if: :all_blank
 
   validates :production_schedule_entries, presence: true
+  validates :starting_date, presence: true, date: { on_or_before: :ending_date, on_or_after: Date.today }
 
   def list_required_ingredients
     required_ingredients = {}

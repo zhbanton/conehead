@@ -16,7 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 gem 'devise'
 gem 'cocoon'
-gem 'calendar_date_select', '~> 2.0.0'
+gem 'validates_timeliness', '~> 3.0'
 
 # Additional gems for this project
 
