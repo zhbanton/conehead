@@ -4,7 +4,7 @@
     <table>
       <% @recipe.recipe_entries.each do |entry| %>
         <tr>
-          <% if entry.quantity < 0 %>
+          <% if entry.quantity > 0 %>
             <td><%= entry.quantity %></td>
           <% end %>
           <td><%= entry.ingredient.name %></td>
@@ -13,7 +13,7 @@
     </table>
   </li>
   <li>makes <%= @recipe.yield %> grams of finished product</li>
-  <li><%= @recipe.note %></li>
+  <li><%= simple_format @recipe.note %></li>
 </ul>
 <%= link_to 'recipes', recipes_path %>
 <%= link_to 'edit', edit_recipe_path(@recipe) %>
