@@ -9,6 +9,8 @@
 <body>
 
 <div>
+  <%= link_to 'recipes', recipes_path %>
+  <%= link_to 'production schedules', production_schedules_path %>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.
     <%= link_to 'Edit profile', edit_user_registration_path %> |

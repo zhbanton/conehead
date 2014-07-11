@@ -1,3 +1,17 @@
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe.name, recipe_path(recipe) %>
-<%end%>
+<h2>Recipes</h2>
+<table>
+  <thead>
+    <th>flavor</th>
+    <th>last made</th>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= link_to recipe.name, recipe_path(recipe) %></td>
+        <td><%= link_to recipe.most_recent_production_date.starting_date.to_formatted_s(:db), production_schedule_path(recipe.most_recent_production_date) if recipe.most_recent_production_date.present?%></td>
+        </tr>
+    <% end %>
+</table>
+<br>
+<%= link_to 'Create New Recipe', new_recipe_path %>
+

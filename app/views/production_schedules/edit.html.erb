@@ -1,0 +1,3 @@
+<%= render 'form' %>
+<%= link_to 'back', production_schedule_path(@production_schedule) %>
+<%= link_to 'delete', @production_schedule, method: :delete, data: { confirm: "Are you sure you want to delete production schedule for #{@production_schedule.starting_date.to_formatted_s(:db)}?" } %>

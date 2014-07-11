@@ -4,6 +4,7 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_entries, dependent: :destroy
   has_many :ingredients, through: :recipe_entries
   has_many :production_schedule_entries
+  has_many :production_schedules, through: :production_schedule_entries
   accepts_nested_attributes_for :recipe_entries, reject_if: proc { |attributes| attributes['quantity'].blank? }
   accepts_nested_attributes_for :ingredients
 
@@ -16,6 +17,10 @@ class Recipe < ActiveRecord::Base
   def to_batch_size
     recipe_entries.each { |entry| entry.quantity *= (User::BATCH_SIZE / entry.recipe.yield) }
     self
+  end
+
+  def most_recent_production_date
+    production_schedules.order(:starting_date).last
   end
 
 end

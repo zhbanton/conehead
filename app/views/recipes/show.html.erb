@@ -2,19 +2,17 @@
 <ul>
   <li>
     <table>
-      <tbody>
-        <% @recipe.recipe_entries.each do |entry| %>
-          <tr>
-            <td><%= entry.quantity %></td>
-            <td><%= entry.ingredient.name %></td>
-          </tr>
-        <% end %>
-      </tbody>
+      <% @recipe.recipe_entries.each do |entry| %>
+        <tr>
+          <td><%= entry.quantity %></td>
+          <td><%= entry.ingredient.name %></td>
+        </tr>
+      <% end %>
     </table>
   </li>
   <li>makes <%= @recipe.yield %> grams of finished product</li>
   <li><%= @recipe.note %></li>
 </ul>
-<%= link_to 'back', recipes_path %>
+<%= link_to 'recipes', recipes_path %>
 <%= link_to 'edit', edit_recipe_path(@recipe) %>
 <%= link_to 'delete', @recipe, method: :delete, data: {confirm: "Are you sure you want to delete recipe for #{@recipe.name}?"} %>

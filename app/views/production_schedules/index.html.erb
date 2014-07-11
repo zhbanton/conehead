@@ -1,14 +1,16 @@
 <table>
   <thead>
-    <th>Start Date</th>
+    <th>Production Period</th>
     <th>Total Output</th>
   </thead>
   <tbody>
     <% @production_schedules.each do |schedule| %>
       <tr>
-        <td> <%=link_to schedule.starting_date.to_formatted_s(:long_ordinal), production_schedule_path(schedule)%> </td>
-        <td> <%=schedule.total_output%> </td>
+        <td><%= link_to "#{schedule.starting_date.to_formatted_s(:db)} - #{schedule.ending_date.to_formatted_s(:db)}", production_schedule_path(schedule) %></td>
+        <td><%= schedule.total_output %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br>
+<%= link_to 'Create a New Production Schedule', new_production_schedule_path %>

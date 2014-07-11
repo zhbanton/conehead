@@ -1,0 +1,21 @@
+<h2> Production for <%= @production_schedule.starting_date.to_formatted_s(:long_ordinal) %> - <%= @production_schedule.ending_date.to_formatted_s(:long_ordinal) %></h2>
+<table>
+  <% @production_schedule.production_schedule_entries.each do |entry| %>
+    <tr>
+      <td><%= entry.quantity %></td>
+      <td><%= entry.recipe.name %></td>
+    </tr>
+  <% end %>
+</table>
+<h3> Required Ingredients </h3>
+<table>
+  <%@required_ingredients.each do |ingredient, quantity|%>
+    <tr>
+      <td><%= ingredient %></td>
+      <td><%= quantity %></td>
+    </tr>
+  <% end %>
+<table>
+<%= link_to 'production schedules', production_schedules_path %><br>
+<%= link_to 'edit', edit_production_schedule_path(@production_schedule) %><br>
+<%= link_to 'delete', @production_schedule, method: :delete, data: {confirm: "Are you sure you want to delete production schedule for #{@production_schedule.starting_date.to_formatted_s(:db)}?"} %>
