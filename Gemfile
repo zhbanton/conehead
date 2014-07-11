@@ -17,6 +17,9 @@ gem 'spring', group: :development
 gem 'devise'
 gem 'cocoon'
 gem 'validates_timeliness', '~> 3.0'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 
 # Additional gems for this project
 
