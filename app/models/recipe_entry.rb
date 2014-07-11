@@ -5,7 +5,7 @@ class RecipeEntry < ActiveRecord::Base
 
   accepts_nested_attributes_for :ingredient, reject_if: proc { |attributes| attributes['name'].blank? }
 
-  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }, allow_blank: :true
   validates :ingredient_id, presence: true
 
   def ingredient_attributes=(ingredient_attributes)

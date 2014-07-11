@@ -1,7 +1,7 @@
 class ProductionSchedulesController < ApplicationController
 
   before_action :authenticate_user!, :set_production_schedule, only: [:show, :edit, :update, :destroy]
-  before_action :set_recipe_select, only: [:new, :edit]
+  before_action :set_recipe_select, only: [:new, :edit, :create]
 
   def index
     @production_schedules = current_user.production_schedules.order(starting_date: :desc)

@@ -91,3 +91,15 @@ BeginningOfDayProductInventory- what you have at beginning of day
 -add validations (revisit recipe validations)
 -add recommended output
 
+
+
+-fix validations
+-downcase/autoformat input
+-preserve line breaks in notes
+
+STYLING
+-watch bootstrap tutorial
+-create nav bar
+-sexy up
+
+DEPLOY TO HEROKU

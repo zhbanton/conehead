@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to recipes_path, notice: "You have updated the recipe for #{@recipe.name}"
+      redirect_to recipes_path, notice: "Recipe for #{@recipe.name} updated"
     else
       flash.now[:alert] = @recipe.errors.full_messages.join(', ')
       render :edit
@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to recipes_path, notice: "You have deleted the recipe for #{@recipe.name}"
+    redirect_to recipes_path, notice: "Recipe for #{@recipe.name} deleted"
   end
 
   private

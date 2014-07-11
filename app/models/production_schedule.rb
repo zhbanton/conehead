@@ -2,7 +2,9 @@ class ProductionSchedule < ActiveRecord::Base
   has_many :production_schedule_entries, dependent: :destroy
   has_many :recipes, through: :production_schedule_entries
 
-  accepts_nested_attributes_for :production_schedule_entries
+  accepts_nested_attributes_for :production_schedule_entries, reject_if: :all_blank
+
+  validates :production_schedule_entries, presence: true
 
   def list_required_ingredients
     required_ingredients = {}
