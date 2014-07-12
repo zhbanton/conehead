@@ -1,4 +1,5 @@
-<table>
+<h3>Production Schedules</h3>
+<table class="table table-striped">
   <thead>
     <th>Production Period</th>
     <th>Total Output</th>
@@ -12,5 +13,6 @@
     <% end %>
   </tbody>
 </table>
-<br>
-<%= link_to 'Create a New Production Schedule', new_production_schedule_path %>
+<div class= "links">
+  <span class="label label-info"><%= link_to 'Create New Production Schedule', new_production_schedule_path %></span>
+</div>

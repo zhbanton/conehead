@@ -1,10 +1,8 @@
 <li class="control-group nested-fields">
   <div class="controls">
-    <div class="field">
-      <%= f.label :quantity, "quantity:" %>
-      <%= f.text_field :quantity %>
+      <%= f.text_field :quantity, class: "quantity" %><span class="unit">batches</span>
       <%= f.select :recipe_id, @recipe_select %>
-      <%= link_to_remove_association "remove", f %>
+      <%= link_to_remove_association 'remove', f %>
     </div>
   </div>
 </li>

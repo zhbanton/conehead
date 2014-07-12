@@ -1,5 +1,5 @@
-<h2> Production for <%= @production_schedule.starting_date.to_formatted_s(:long_ordinal) %> - <%= @production_schedule.ending_date.to_formatted_s(:long_ordinal) %></h2>
-<table>
+<h3> Production for <%= @production_schedule.starting_date.to_formatted_s(:long_ordinal) %> - <%= @production_schedule.ending_date.to_formatted_s(:long_ordinal) %></h3>
+<table class="table table-striped">
   <% @production_schedule.production_schedule_entries.each do |entry| %>
     <tr>
       <td><%= entry.quantity %></td>
@@ -8,7 +8,7 @@
   <% end %>
 </table>
 <h3> Required Ingredients </h3>
-<table>
+<table class="table table-striped">
   <%@required_ingredients.each do |ingredient, quantity|%>
     <tr>
       <td><%= ingredient %></td>
@@ -16,6 +16,10 @@
     </tr>
   <% end %>
 <table>
-<%= link_to 'production schedules', production_schedules_path %><br>
-<%= link_to 'edit', edit_production_schedule_path(@production_schedule) %><br>
-<%= link_to 'delete', @production_schedule, method: :delete, data: {confirm: "Are you sure you want to delete production schedule for #{@production_schedule.starting_date.to_formatted_s(:db)}?"} %>
+<div class="links">
+  <span class="label label-info"><%= link_to 'production schedules', production_schedules_path %></span>
+  <span class="label label-info"><%= link_to 'edit', edit_production_schedule_path(@production_schedule) %></span>
+  <span class="label label-info"><%= link_to 'delete', @production_schedule, method: :delete, data: {confirm: "Are you sure you want to delete production schedule for #{@production_schedule.starting_date.to_formatted_s(:db)}?"} %></span>
+</div>
+
+

@@ -11,6 +11,114 @@
  * file per style scope.
  *
  *= require twitter-bootstrap-static/bootstrap
- *= require_self
  *= require_tree .
+ *= require_self
  */
+form {
+  display: inline-block;
+  margin-left: 31%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+textarea {
+  width: 295px;
+  height: 120px;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+article {
+  text-align: center;
+}
+
+.table-striped {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.nav {
+  background: #262662
+}
+
+.right {
+  float: right !important;
+}
+
+.login {
+  padding-top: 6.5px;
+  color: white;
+}
+
+.quantity {
+  width: 50px;
+}
+
+.nested-fields {
+  margin-left: -25px;
+}
+
+.recipe-ingredients-label {
+  margin: 0 0 20px 122px;
+}
+
+.production-scheudle-recipes-label {
+  margin: 0 0 20px 0;
+}
+
+.control-label {
+  font-weight: bold;
+}
+
+.unit {
+  padding: 0 10px 0 5px;
+  color: gray;
+}
+
+.add-line {
+  margin-bottom: 30px;
+}
+
+.sub-form-headers {
+  color: gray;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.quantity-label {
+  margin-left: 180px;
+}
+
+.item-label {
+  margin-left: 70px;
+}
+
+.production-schedule-quantity-label {
+  margin-left: 0;
+}
+
+.production-schedule-item-label {
+  margin-left: 115px;
+}
+
+.form-submit {
+  margin: 15px 0 0 180px;
+}
+
+.links {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.links a:link {
+  color: white;
+}
+
+.links a:visited {
+  color: white;
+}

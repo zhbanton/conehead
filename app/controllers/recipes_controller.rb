@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
 
-  before_action :authenticate_user!, :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = current_user.recipes.order(:name)
+    @recipes = current_user.recipes.where(is_active: true).order(:name)
   end
 
   def new
@@ -26,22 +27,21 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to recipes_path, notice: "Recipe for #{@recipe.name} updated"
+      if @recipe.is_active
+        redirect_to recipes_path, notice: "Recipe for #{@recipe.name} updated"
+      else
+        redirect_to recipes_path, notice: "Recipe for #{@recipe.name} deleted"
+      end
     else
       flash.now[:alert] = @recipe.errors.full_messages.join(', ')
       render :edit
     end
   end
 
-  def destroy
-    @recipe.destroy
-    redirect_to recipes_path, notice: "Recipe for #{@recipe.name} deleted"
-  end
-
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :note, :user_id, recipe_entries_attributes: [:id, :quantity, :recipe_id, :ingredient_id, ingredient_attributes: [:id, :name, :user_id]])
+    params.require(:recipe).permit(:name, :note, :is_active, :user_id, recipe_entries_attributes: [:id, :quantity, :recipe_id, :ingredient_id, ingredient_attributes: [:id, :name, :user_id]])
   end
 
   def set_recipe

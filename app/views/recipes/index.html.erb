@@ -1,5 +1,5 @@
-<h2>Recipes</h2>
-<table>
+<h3>Recipes</h3>
+<table class='table table-striped'>
   <thead>
     <th>flavor</th>
     <th>last made</th>
@@ -12,6 +12,8 @@
         </tr>
     <% end %>
 </table>
-<br>
-<%= link_to 'Create New Recipe', new_recipe_path %>
+<div class= "links">
+  <span class="label label-info"><%= link_to 'Create New Recipe', new_recipe_path %></span>
+</div>
+
 
