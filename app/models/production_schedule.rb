@@ -7,6 +7,7 @@ class ProductionSchedule < ActiveRecord::Base
   validates :production_schedule_entries, presence: true
   validates :starting_date, presence: true, date: { on_or_before: :ending_date, on_or_after: Date.today }
   validates :ending_date, presence: true
+  validate :one_production_scheudle_per_week
 
   def list_required_ingredients
     required_ingredients = {}
@@ -25,5 +26,17 @@ class ProductionSchedule < ActiveRecord::Base
 
   def total_output
     production_schedule_entries.map { |entry| entry.quantity * User::BATCH_SIZE }.reduce(:+)
+  end
+
+  def one_production_scheudle_per_week
+    found_error = false
+    ProductionSchedule.all.each do |schedule|
+      if starting_date.present? && starting_date.cweek == schedule.starting_date.cweek && starting_date.year == schedule.starting_date.year
+        found_error = true
+      end
+    end
+    if found_error
+      errors.add(:starting_date, "schedule already exists for that week")
+    end
   end
 end
