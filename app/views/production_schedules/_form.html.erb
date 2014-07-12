@@ -2,13 +2,13 @@
   <div class="form-group">
     <%= f.label :starting_date, class: "control-label" %>
     <div class="controls">
-      <%= f.date_select :starting_date %>
+      <%= f.date_field :starting_date, autofocus: true, placeholder: "#{Date.today}" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :ending_date, class: "control-label"%>
     <div class="controls">
-      <%= f.date_select :ending_date %>
+      <%= f.date_field :ending_date, placeholder: "#{Date.today}" %>
     </div>
   </div>
   <div class="production-scheudle-recipes-label"><strong>Recipes</strong></div>

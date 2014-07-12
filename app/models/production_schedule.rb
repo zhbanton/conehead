@@ -6,6 +6,7 @@ class ProductionSchedule < ActiveRecord::Base
 
   validates :production_schedule_entries, presence: true
   validates :starting_date, presence: true, date: { on_or_before: :ending_date, on_or_after: Date.today }
+  validates :ending_date, presence: true
 
   def list_required_ingredients
     required_ingredients = {}
