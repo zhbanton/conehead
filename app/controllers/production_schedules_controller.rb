@@ -50,7 +50,7 @@ class ProductionSchedulesController < ApplicationController
   end
 
   def set_recipe_select
-    @recipe_select = Recipe.all.map { |r| [r.name,r.id] }
+    @recipe_select = Recipe.where(is_active: true).map { |r| [r.name,r.id] }
   end
 
 end
