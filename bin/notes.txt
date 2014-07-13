@@ -122,4 +122,4 @@ OVERALL SCHEDULE
 -improve styling
 -refactor
 -wireframes, object models, documentation
--wireframes, anything else on rubric
+-anything else on rubric

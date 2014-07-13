@@ -24,16 +24,26 @@ class Day
     @date.to_formatted_s
   end
 
-  def net_sales(starting_inventory, ending_inventory)
+  def starting_inventory(user)
+    user.starting_inventories.where(inventory_date: date).first
+  end
+
+  def ending_inventory(user)
+    user.ending_inventories.where(inventory_date: date).first
+  end
+
+  def net_sales(user)
     product_sold = {}
-    starting_inventory.starting_inventory_entries.each do |entry|
+    return product_sold if starting_inventory(user) == nil
+    return net_sales_without_ending_inventory(user) if ending_inventory(user) == nil
+    starting_inventory(user).starting_inventory_entries.each do |entry|
       if product_sold[entry.recipe.name]
         product_sold[entry.recipe.name] += entry.quantity
       else
         product_sold[entry.recipe.name] = entry.quantity
       end
     end
-    ending_inventory.ending_inventory_entries.each do |entry|
+    ending_inventory(user).ending_inventory_entries.each do |entry|
       if product_sold[entry.recipe.name]
         product_sold[entry.recipe.name] -= entry.quantity
       else
@@ -41,6 +51,14 @@ class Day
       end
     end
     product_sold
+  end
+
+  def net_sales_without_ending_inventory(user)
+    products = {}
+    starting_inventory(user).starting_inventory_entries.each do |entry|
+      products[entry.recipe.name] = 0
+    end
+    products
   end
 
 end

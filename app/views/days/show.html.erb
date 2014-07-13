@@ -1,12 +1,13 @@
 <h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
-<% if @starting_inventories.exists? %>
-  <%= link_to "Beginning Of Day Inventory", edit_day_starting_inventory_path(@day, @starting_inventories.first) %>
+<% if @starting_inventory.present? %>
+  <%= link_to "Beginning Of Day Inventory", edit_day_starting_inventory_path(@day, @starting_inventory) %>
 <% else %>
   <%= link_to "Beginning Of Day Inventory", new_day_starting_inventory_path(@day) %>
 <% end %>
 <br>
-<% if @ending_inventories.exists? %>
-  <%= link_to "End Of Day Inventory", edit_day_ending_inventory_path(@day, @ending_inventories.first) %>
+<% if @ending_inventory.present? %>
+  <%= link_to "End Of Day Inventory", edit_day_ending_inventory_path(@day, @ending_inventory) %>
 <% else %>
   <%= link_to "End Of Day Inventory", new_day_ending_inventory_path(@day) %>
 <% end %>
+<%= @net_sales %>

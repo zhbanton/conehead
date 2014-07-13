@@ -8,8 +8,9 @@ before_action :authenticate_user!
 
   def show
     @day = Day.find(params[:id])
-    @starting_inventories = current_user.starting_inventories.where(inventory_date: @day.date)
-    @ending_inventories = current_user.ending_inventories.where(inventory_date: @day.date)
+    @starting_inventory= @day.starting_inventory(current_user)
+    @ending_inventory= @day.ending_inventory(current_user)
+    @net_sales = @day.net_sales(current_user)
   end
 
   def weeks

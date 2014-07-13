@@ -5,6 +5,7 @@ class EndingInventoriesController < ApplicationController
 
   def new
     @ending_inventory = current_user.ending_inventories.new
+    @ending_inventory.set_to_starting_inventory(current_user.starting_inventories.where(inventory_date: @day.date).first)
   end
 
   def create
