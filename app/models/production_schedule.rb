@@ -4,7 +4,7 @@ class ProductionSchedule < ActiveRecord::Base
   has_many :recipes, through: :production_schedule_entries
   belongs_to :user
 
-  accepts_nested_attributes_for :production_schedule_entries, reject_if: :all_blank
+  accepts_nested_attributes_for :production_schedule_entries, reject_if: :all_blank, allow_destroy: true
 
   validates :production_schedule_entries, presence: true
   validates :starting_date, presence: true, date: { on_or_after: Date.today }

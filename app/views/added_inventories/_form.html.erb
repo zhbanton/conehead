@@ -1,0 +1,17 @@
+<h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
+<%= form_for [@day, @added_inventory] do |f| %>
+  <div class="added-inventory-recipes-label"><strong>Flavors</strong></div>
+  <fieldset id="added-inventory-entries">
+    <div class="sub-form-headers"><span class="added-inventory-quantity-label">qty.</span><span class="added-inventory-item-label">name</span></div>
+    <ul>
+      <%= f.fields_for :added_inventory_entries do |entry| %>
+        <%= render 'added_inventory_entry_fields', f: entry %>
+      <% end %>
+    </ul>
+    <%= link_to_add_association 'add flavor', f, :added_inventory_entries, 'data-association-insertion-node' => "#added-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+  </fieldset>
+  <%= f.hidden_field :inventory_date, value: @day.date %>
+  <div class="form-submit">
+    <%= f.submit %>
+  </div>
+<% end %>

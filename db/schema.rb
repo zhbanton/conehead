@@ -16,25 +16,25 @@ ActiveRecord::Schema.define(version: 20140713163249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "added_product_entries", force: true do |t|
-    t.integer  "quantity"
-    t.integer  "recipe_id"
-    t.integer  "added_product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "added_product_entries", ["added_product_id"], name: "index_added_product_entries_on_added_product_id", using: :btree
-  add_index "added_product_entries", ["recipe_id"], name: "index_added_product_entries_on_recipe_id", using: :btree
-
-  create_table "added_products", force: true do |t|
+  create_table "added_inventories", force: true do |t|
     t.integer  "user_id"
     t.date     "inventory_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "added_products", ["user_id"], name: "index_added_products_on_user_id", using: :btree
+  add_index "added_inventories", ["user_id"], name: "index_added_inventories_on_user_id", using: :btree
+
+  create_table "added_inventory_entries", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "recipe_id"
+    t.integer  "added_inventory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "added_inventory_entries", ["added_inventory_id"], name: "index_added_inventory_entries_on_added_inventory_id", using: :btree
+  add_index "added_inventory_entries", ["recipe_id"], name: "index_added_inventory_entries_on_recipe_id", using: :btree
 
   create_table "ending_inventories", force: true do |t|
     t.integer  "user_id"

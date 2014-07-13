@@ -110,6 +110,7 @@ Date.today.at_beginning_of_week # returns monday of that week
 
 THINGS TO REVISIT
 -change inventories routes to include only those needed
+-validations on ps, inventories
 -can day/week/history routes be improved?- dont rely on passing params
 
 OVERALL SCHEDULE

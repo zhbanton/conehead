@@ -6,7 +6,8 @@ class EndingInventoriesController < ApplicationController
   def new
     @ending_inventory = current_user.ending_inventories.new
     starting_inventory = current_user.starting_inventories.where(inventory_date: @day.date).first
-    @ending_inventory.set_to_starting_inventory(starting_inventory) if starting_inventory != nil
+    added_inventory = current_user.added_inventories.where(inventory_date: @day.date).first
+    @ending_inventory.set_to_days_inventory(starting_inventory, added_inventory) if starting_inventory.present?
   end
 
   def create
@@ -43,7 +44,7 @@ class EndingInventoriesController < ApplicationController
   end
 
   def ending_inventory_params
-    params.require(:ending_inventory).permit(:inventory_date, :employee, ending_inventory_entries_attributes: [:id, :quantity, :ending_inventory_id, :recipe_id])
+    params.require(:ending_inventory).permit(:inventory_date, :employee, ending_inventory_entries_attributes: [:id, :quantity, :ending_inventory_id, :recipe_id, :_destroy])
   end
 
 end

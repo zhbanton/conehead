@@ -28,6 +28,10 @@ class Day
     user.starting_inventories.where(inventory_date: date).first
   end
 
+  def added_inventory(user)
+    user.added_inventories.where(inventory_date: date).first
+  end
+
   def ending_inventory(user)
     user.ending_inventories.where(inventory_date: date).first
   end
@@ -36,6 +40,7 @@ class Day
     product_sold = {}
     return product_sold if starting_inventory(user) == nil
     return net_sales_without_ending_inventory(user) if ending_inventory(user) == nil
+
     starting_inventory(user).starting_inventory_entries.each do |entry|
       if product_sold[entry.recipe.name]
         product_sold[entry.recipe.name] += entry.quantity
@@ -43,6 +48,17 @@ class Day
         product_sold[entry.recipe.name] = entry.quantity
       end
     end
+
+    if added_inventory(user).present?
+      added_inventory(user).added_inventory_entries.each do |entry|
+        if product_sold[entry.recipe.name]
+          product_sold[entry.recipe.name] += entry.quantity
+        else
+          product_sold[entry.recipe.name] = entry.quantity
+        end
+      end
+    end
+
     ending_inventory(user).ending_inventory_entries.each do |entry|
       if product_sold[entry.recipe.name]
         product_sold[entry.recipe.name] -= entry.quantity
@@ -57,6 +73,11 @@ class Day
     products = {}
     starting_inventory(user).starting_inventory_entries.each do |entry|
       products[entry.recipe.name] = 0
+    end
+    if added_inventory(user)
+      added_inventory(user).added_inventory_entries.each do |entry|
+        products[entry.recipe.name] = 0
+      end
     end
     products
   end

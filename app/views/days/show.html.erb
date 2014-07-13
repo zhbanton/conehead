@@ -5,9 +5,16 @@
   <%= link_to "Beginning Of Day Inventory", new_day_starting_inventory_path(@day) %>
 <% end %>
 <br>
+<% if @added_inventory.present? %>
+  <%= link_to "Add Inventory", edit_day_added_inventory_path(@day, @added_inventory) %>
+<% else %>
+  <%= link_to "Add Inventory", new_day_added_inventory_path(@day) %>
+<% end %>
+<br>
 <% if @ending_inventory.present? %>
   <%= link_to "End Of Day Inventory", edit_day_ending_inventory_path(@day, @ending_inventory) %>
 <% else %>
   <%= link_to "End Of Day Inventory", new_day_ending_inventory_path(@day) %>
 <% end %>
+<br>
 <%= @net_sales %>
