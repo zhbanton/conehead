@@ -6,10 +6,10 @@ class Day
 
   def self.all
     if StartingInventory.all.empty?
-      return [Date.today]
+      return (Date.today..Date.today + 1.week).map { |day| new(day) }
     end
     inventories = StartingInventory.all.order(:inventory_date)
-    (inventories.first.inventory_date..(Date.today + 2.weeks)).map{ |day| new(day) }
+    (inventories.first.inventory_date..(Date.today + 1.week)).map{ |day| new(day) }
   end
 
   def self.find(param)

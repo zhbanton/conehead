@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713163249) do
+ActiveRecord::Schema.define(version: 20140713222949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140713163249) do
   add_index "added_inventories", ["user_id"], name: "index_added_inventories_on_user_id", using: :btree
 
   create_table "added_inventory_entries", force: true do |t|
-    t.integer  "quantity"
+    t.decimal  "quantity"
     t.integer  "recipe_id"
     t.integer  "added_inventory_id"
     t.datetime "created_at"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140713163249) do
   create_table "ending_inventory_entries", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "ending_inventory_id"
-    t.integer  "quantity"
+    t.decimal  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20140713163249) do
   create_table "starting_inventory_entries", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "starting_inventory_id"
-    t.integer  "quantity"
+    t.decimal  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

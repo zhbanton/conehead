@@ -22,6 +22,10 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'bootstrap_form'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # Additional gems for this project
 
 group :development, :test do
