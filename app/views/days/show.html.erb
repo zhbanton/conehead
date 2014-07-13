@@ -4,3 +4,9 @@
 <% else %>
   <%= link_to "Beginning Of Day Inventory", new_day_starting_inventory_path(@day) %>
 <% end %>
+<br>
+<% if @ending_inventories.exists? %>
+  <%= link_to "End Of Day Inventory", edit_day_ending_inventory_path(@day, @ending_inventories.first) %>
+<% else %>
+  <%= link_to "End Of Day Inventory", new_day_ending_inventory_path(@day) %>
+<% end %>

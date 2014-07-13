@@ -10,7 +10,7 @@ class StartingInventoriesController < ApplicationController
   def create
     @starting_inventory = current_user.starting_inventories.new(starting_inventory_params)
     if @starting_inventory.save
-      redirect_to days_path(@day), notice: "Starting Inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} created"
+      redirect_to day_path(@day), notice: "Beginning of day inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} created"
     else
       flash.now[:alert] = @starting_inventory.errors.full_messages.join(', ')
       render :new
@@ -19,7 +19,7 @@ class StartingInventoriesController < ApplicationController
 
   def update
     if @starting_inventory.update(starting_inventory_params)
-      redirect_to day_path(@day), notice: "Starting inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} updated"
+      redirect_to day_path(@day), notice: "Beginning of day inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} updated"
     else
       flash.now[:alert] = @starting_inventory.errors.full_messages.join(', ')
       render :edit

@@ -24,8 +24,5 @@ class Day
     @date.to_formatted_s
   end
 
-  def starting_inventories
-    StartingInventory.all.where(inventory_date: @date)
-  end
 
 end
