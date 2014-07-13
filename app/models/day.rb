@@ -24,5 +24,23 @@ class Day
     @date.to_formatted_s
   end
 
+  def net_sales(starting_inventory, ending_inventory)
+    product_sold = {}
+    starting_inventory.starting_inventory_entries.each do |entry|
+      if product_sold[entry.recipe.name]
+        product_sold[entry.recipe.name] += entry.quantity
+      else
+        product_sold[entry.recipe.name] = entry.quantity
+      end
+    end
+    ending_inventory.ending_inventory_entries.each do |entry|
+      if product_sold[entry.recipe.name]
+        product_sold[entry.recipe.name] -= entry.quantity
+      else
+        product_sold[entry.recipe.name] = 0
+      end
+    end
+    product_sold
+  end
 
 end
