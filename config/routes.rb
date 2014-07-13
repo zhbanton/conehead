@@ -5,12 +5,9 @@ Rails.application.routes.draw do
 
   resources :production_schedules
 
-  resources :starting_inventories, only: [:new, :create, :show, :edit, :update, :delete]
-
   resources :days do
-    get 'view_day', on: :collection
-    get 'view_week', on: :collection
+    get 'weeks', on: :collection
+    resources :starting_inventories, only: [:new, :create, :show, :edit, :update, :delete]
   end
 
-  root 'days#view_day', day: Date.today
 end

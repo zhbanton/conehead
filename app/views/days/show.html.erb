@@ -1,0 +1,6 @@
+<h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
+<% if @day.starting_inventories.exists? %>
+  <%= link_to "Beginning Of Day Inventory", edit_day_starting_inventory_path(@day, @day.starting_inventories.first) %>
+<% else %>
+  <%= link_to "Beginning Of Day Inventory", new_day_starting_inventory_path(@day) %>
+<% end %>

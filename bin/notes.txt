@@ -115,6 +115,8 @@ THINGS TO REVISIT
 OVERALL SCHEDULE
 -figure out production schedule format
 -create by round tables
+-test everything
+-deploy to heroku
 -create conversions- store some common (milk, eggs) by ingredient- create them when new user is created
 -edit devise stuff to be able to edit user info- maybe include shop name, batch size, settings for production schedules
 -improve styling
