@@ -103,3 +103,7 @@ STYLING
 -sexy up
 
 DEPLOY TO HEROKU
+
+CREATE NEW ProductionPeriod MODEL- add validation from production schedule- no edit or update
+
+Date.today.at_beginning_of_week # returns monday of that week

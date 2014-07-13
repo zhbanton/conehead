@@ -5,12 +5,6 @@
       <%= f.date_field :starting_date, autofocus: true, placeholder: "#{Date.today}" %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :ending_date, class: "control-label"%>
-    <div class="controls">
-      <%= f.date_field :ending_date, placeholder: "#{Date.today}" %>
-    </div>
-  </div>
   <div class="production-scheudle-recipes-label"><strong>Recipes</strong></div>
   <fieldset id="production-schedule-entries">
     <div class="sub-form-headers"><span class="production-schedule-quantity-label">qty.</span><span class="production-schedule-item-label">name</span></div>

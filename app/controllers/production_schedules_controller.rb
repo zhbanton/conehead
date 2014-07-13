@@ -42,7 +42,7 @@ class ProductionSchedulesController < ApplicationController
   private
 
   def production_schedule_params
-    params.require(:production_schedule).permit(:starting_date, :ending_date, production_schedule_entries_attributes: [:id, :quantity, :production_schedule_id, :recipe_id])
+    params.require(:production_schedule).permit(:starting_date, production_schedule_entries_attributes: [:id, :quantity, :production_schedule_id, :recipe_id])
   end
 
   def set_production_schedule

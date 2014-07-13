@@ -1,4 +1,4 @@
-<h3> Production for <%= @production_schedule.starting_date.to_formatted_s(:long_ordinal) %> - <%= @production_schedule.ending_date.to_formatted_s(:long_ordinal) %></h3>
+<h3> Production for <%= @production_schedule.starting_date.to_formatted_s(:long_ordinal) %> - <%= @production_schedule.starting_date.at_end_of_week.to_formatted_s(:long_ordinal) %></h3>
 <table class="table table-striped">
   <% @production_schedule.production_schedule_entries.each do |entry| %>
     <tr>

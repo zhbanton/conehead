@@ -7,7 +7,6 @@ class Recipe < ActiveRecord::Base
   has_many :production_schedule_entries
   has_many :production_schedules, through: :production_schedule_entries
   accepts_nested_attributes_for :recipe_entries, reject_if: proc { |attributes| attributes['quantity'].blank? && attributes['ingredient_attributes']['name'].blank? }
-  accepts_nested_attributes_for :ingredients
 
   validates :name, { presence: true, uniqueness: { scope: :user_id } }
 

@@ -5,5 +5,10 @@ Rails.application.routes.draw do
 
   resources :production_schedules
 
-  root 'recipes#index'
+  resources :days do
+    get 'view_day', on: :collection
+    get 'view_week', on: :collection
+  end
+
+  root 'days#view_day', day: Date.today
 end
