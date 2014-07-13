@@ -1,5 +1,0 @@
-<% if @starting_inventory.exists? %>
-  <%= link_to "Beginning Of Day Inventory", edit_starting_inventory_path(@starting_inventory) %>
-<% else %>
-  <%= link_to "Beginning Of Day Inventory", new_starting_inventory_path(day: @day) %>
-<% end %>

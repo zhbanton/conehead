@@ -1,18 +1,28 @@
 class StartingInventoriesController < ApplicationController
-  before_action :set_recipe_select, only: [:new, :edit, :create]
+  before_action :set_recipe_select, only: [:new, :edit, :create, :update]
+  before_action :set_day
+  before_action :set_starting_inventory, only: [:edit, :update]
 
   def new
     @starting_inventory = current_user.starting_inventories.new
-    @day = params[:day]
   end
 
   def create
     @starting_inventory = current_user.starting_inventories.new(starting_inventory_params)
     if @starting_inventory.save
-      redirect_to view_day_days_path(day: @starting_inventory.inventory_date), notice: "Starting Inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} created"
+      redirect_to days_path(@day), notice: "Starting Inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} created"
     else
       flash.now[:alert] = @starting_inventory.errors.full_messages.join(', ')
-      render "starting_inventories/new", locals: { day: @starting_inventory.inventory_date }
+      render :new
+    end
+  end
+
+  def update
+    if @starting_inventory.update(starting_inventory_params)
+      redirect_to day_path(@day), notice: "Starting inventory for #{@starting_inventory.inventory_date.to_formatted_s(:long_ordinal)} updated"
+    else
+      flash.now[:alert] = @starting_inventory.errors.full_messages.join(', ')
+      render :edit
     end
   end
 
@@ -20,6 +30,14 @@ class StartingInventoriesController < ApplicationController
 
   def set_recipe_select
     @recipe_select = Recipe.where(is_active: true).map { |r| [r.name,r.id] }
+  end
+
+  def set_day
+    @day = Day.find(params[:day_id])
+  end
+
+  def set_starting_inventory
+    @starting_inventory = StartingInventory.find(params[:id])
   end
 
   def starting_inventory_params

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :starting_inventories, only: [:new, :create, :show, :edit, :update, :delete]
   end
 
+  root to: "days#show", id: Date.today.to_formatted_s
+
 end

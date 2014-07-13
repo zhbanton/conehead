@@ -1,5 +1,7 @@
 class Day
 
+  include ActiveModel::Model
+
   attr_reader :date
 
   def self.all
@@ -7,7 +9,7 @@ class Day
       return [Date.today]
     end
     inventories = StartingInventory.all.order(:inventory_date)
-    (inventories.first.inventory_date..(inventories.last.inventory_date + 2.weeks)).map{ |day| new(day) }
+    (inventories.first.inventory_date..(Date.today + 2.weeks)).map{ |day| new(day) }
   end
 
   def self.find(param)
