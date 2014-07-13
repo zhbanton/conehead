@@ -2,6 +2,7 @@ class ProductionSchedule < ActiveRecord::Base
 
   has_many :production_schedule_entries, dependent: :destroy
   has_many :recipes, through: :production_schedule_entries
+  belongs_to :user
 
   accepts_nested_attributes_for :production_schedule_entries, reject_if: :all_blank
 

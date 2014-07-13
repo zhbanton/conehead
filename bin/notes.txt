@@ -107,3 +107,17 @@ DEPLOY TO HEROKU
 CREATE NEW ProductionPeriod MODEL- add validation from production schedule- no edit or update
 
 Date.today.at_beginning_of_week # returns monday of that week
+
+THINGS TO REVISIT
+-change inventories routes to include only those needed
+-can day/week/history routes be improved?- dont rely on passing params
+
+OVERALL SCHEDULE
+-figure out production schedule format
+-create by round tables
+-create conversions- store some common (milk, eggs) by ingredient- create them when new user is created
+-edit devise stuff to be able to edit user info- maybe include shop name, batch size, settings for production schedules
+-improve styling
+-refactor
+-wireframes, object models, documentation
+-wireframes, anything else on rubric

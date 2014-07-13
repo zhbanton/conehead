@@ -3,4 +3,5 @@ class StartingInventoryEntry < ActiveRecord::Base
   belongs_to :starting_inventory
 
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+  validates :recipe_id, presence: true
 end

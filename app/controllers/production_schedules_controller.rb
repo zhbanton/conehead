@@ -7,12 +7,12 @@ class ProductionSchedulesController < ApplicationController
     @production_schedules = current_user.production_schedules.order(starting_date: :desc)
   end
 
-  def new
-    @production_schedule = current_user.production_schedules.new
-  end
-
   def show
     @required_ingredients = @production_schedule.list_required_ingredients
+  end
+
+  def new
+    @production_schedule = current_user.production_schedules.new
   end
 
   def create

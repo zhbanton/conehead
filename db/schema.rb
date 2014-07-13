@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140713002709) do
   create_table "starting_inventories", force: true do |t|
     t.date     "inventory_date"
     t.string   "employee"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

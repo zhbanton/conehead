@@ -1,0 +1,22 @@
+<%= form_for @starting_inventory do |f| %>
+  <div class="form-group">
+    <%= f.label :employee, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :employee %>
+    </div>
+  </div>
+  <div class="starting-inventory-recipes-label"><strong>Flavors</strong></div>
+  <fieldset id="starting-inventory-entries">
+    <div class="sub-form-headers"><span class="starting-inventory-quantity-label">qty.</span><span class="starting-inventory-item-label">name</span></div>
+    <ul>
+      <%= f.fields_for :starting_inventory_entries do |entry| %>
+        <%= render 'starting_inventory_entry_fields', f: entry %>
+      <% end %>
+    </ul>
+    <%= link_to_add_association 'add flavor', f, :starting_inventory_entries, 'data-association-insertion-node' => "#starting-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+  </fieldset>
+  <%= f.hidden_field :inventory_date, value: @day %>
+  <div class="form-submit">
+    <%= f.submit %>
+  </div>
+<% end %>

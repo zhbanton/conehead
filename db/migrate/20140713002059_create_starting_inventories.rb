@@ -3,6 +3,7 @@ class CreateStartingInventories < ActiveRecord::Migration
     create_table :starting_inventories do |t|
       t.date :inventory_date
       t.string :employee
+      t.references :user
 
       t.timestamps
     end
