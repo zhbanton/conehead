@@ -6,14 +6,23 @@ class Day
 
   def self.all
     if StartingInventory.all.empty?
-      return (Date.today..Date.today + 1.week).map { |day| new(day) }
+      return (Date.today..Date.today + 2.weeks).map { |day| new(day) }
     end
-    inventories = StartingInventory.all.order(:inventory_date)
-    (inventories.first.inventory_date..(Date.today + 1.week)).map{ |day| new(day) }
+    first_inventory = StartingInventory.all.order(:inventory_date).first.inventory_date
+    (first_inventory..Date.today + 2.weeks).map{ |day| new(day) }
   end
 
   def self.find(param)
     all.detect { |day| day.to_param == param } || raise(ActiveRecord::RecordNotFound)
+  end
+
+  def self.is_day?(param)
+    begin
+      self.find(param)
+      return true
+    rescue ActiveRecord::RecordNotFound => ex
+      false
+    end
   end
 
   def initialize(date)
@@ -36,7 +45,11 @@ class Day
     user.ending_inventories.where(inventory_date: date).first
   end
 
-  def net_sales(user)
+  def production_schedules(user)
+    user.production_schedules.find_all { |schedule| schedule.starting_date <= date && schedule.ending_date >= date }
+  end
+
+  def net_sales_by_product(user)
     product_sold = {}
     return product_sold if starting_inventory(user) == nil
     return net_sales_without_ending_inventory(user) if ending_inventory(user) == nil
@@ -68,6 +81,13 @@ class Day
     end
     product_sold
   end
+
+  def net_sales(user)
+    net_sales_by_product(user).values.reduce(:+)
+  end
+
+
+  private
 
   def net_sales_without_ending_inventory(user)
     products = {}

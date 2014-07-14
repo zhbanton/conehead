@@ -1,9 +1,13 @@
 <h3><%= @recipe.name %></h3>
     <table class="table table-striped">
+      <thead>
+        <th>Quantity (g)</th>
+        <th>Ingredient</th>
+      </thead>
       <% @recipe.recipe_entries.each do |entry| %>
         <tr>
           <% if entry.quantity > 0 %>
-            <td><%= entry.quantity %> g</td>
+            <td><%= number_with_precision(entry.quantity, precision: 2, strip_insignificant_zeros: true) %></td>
           <% end %>
           <td><%= entry.ingredient.name %></td>
         </tr>

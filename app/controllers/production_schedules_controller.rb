@@ -18,7 +18,7 @@ class ProductionSchedulesController < ApplicationController
   def create
     @production_schedule = current_user.production_schedules.new(production_schedule_params)
     if @production_schedule.save
-      redirect_to production_schedule_path(@production_schedule), notice: "Production schedule for period starting #{@production_schedule.starting_date.to_formatted_s(:long_ordinal)} created"
+      redirect_to production_schedule_path(@production_schedule), notice: "Production schedule for #{@production_schedule.to_s} created"
     else
       flash.now[:alert] = @production_schedule.errors.full_messages.join(', ')
       render :new
@@ -27,7 +27,7 @@ class ProductionSchedulesController < ApplicationController
 
   def update
     if @production_schedule.update(production_schedule_params)
-      redirect_to production_schedules_path, notice: "Production schedule for period starting #{@production_schedule.starting_date.to_formatted_s(:long_ordinal)} updated"
+      redirect_to production_schedules_path, notice: "Production schedule for #{@production_schedule.to_s} updated"
     else
       flash.now[:alert] = @production_schedule.errors.full_messages.join(', ')
       render :edit
@@ -36,13 +36,13 @@ class ProductionSchedulesController < ApplicationController
 
   def destroy
     @production_schedule.destroy
-    redirect_to production_schedules_path, notice: "Production schedule for period starting #{@production_schedule.starting_date.to_formatted_s(:long_ordinal)} deleted"
+    redirect_to production_schedules_path, notice: "Production schedule for #{@production_schedule.to_s}deleted"
   end
 
   private
 
   def production_schedule_params
-    params.require(:production_schedule).permit(:starting_date, production_schedule_entries_attributes: [:id, :quantity, :production_schedule_id, :recipe_id, :_destroy])
+    params.require(:production_schedule).permit(:starting_date, :ending_date, production_schedule_entries_attributes: [:id, :quantity, :production_schedule_id, :recipe_id, :_destroy])
   end
 
   def set_production_schedule

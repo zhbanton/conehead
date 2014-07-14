@@ -1,0 +1,4 @@
+<% @weeks.each do |week| %>
+  <%= link_to week.to_s, week_path(week) %>
+  <br>
+<% end %>

@@ -1,18 +1,28 @@
-<h3> Production for <%= @production_schedule.starting_date.to_formatted_s(:long_ordinal) %> - <%= @production_schedule.starting_date.at_end_of_week.to_formatted_s(:long_ordinal) %></h3>
+<h3> Production for <%= @production_schedule.to_s %></h3>
 <table class="table table-striped">
+  <thead>
+    <th>Batches</th>
+    <th>Flavor</th>
+  </thead>
+  <tbody>
   <% @production_schedule.production_schedule_entries.each do |entry| %>
     <tr>
-      <td><%= entry.quantity %></td>
+      <td><%=  number_with_precision(entry.quantity, precision: 2, strip_insignificant_zeros: true) %></td>
       <td><%= entry.recipe.name %></td>
     </tr>
   <% end %>
 </table>
 <h3> Required Ingredients </h3>
 <table class="table table-striped">
+  <thead>
+    <th>Ingredient</th>
+    <th>Quantity (lbs)</th>
+  </thead>
+  <tbody>
   <%@required_ingredients.each do |ingredient, quantity|%>
     <tr>
       <td><%= ingredient %></td>
-      <td><%= quantity %></td>
+      <td><%=  number_with_precision(quantity, precision: 2, strip_insignificant_zeros: true) %></td>
     </tr>
   <% end %>
 <table>

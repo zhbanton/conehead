@@ -2,13 +2,13 @@
 <table class="table table-striped">
   <thead>
     <th>Production Period</th>
-    <th>Total Output</th>
+    <th>Total Output (lbs)</th>
   </thead>
   <tbody>
     <% @production_schedules.each do |schedule| %>
       <tr>
-        <td><%= link_to "#{schedule.starting_date.to_formatted_s(:db)} - #{schedule.starting_date.at_end_of_week.to_formatted_s(:db)}", production_schedule_path(schedule) %></td>
-        <td><%= schedule.total_output %></td>
+        <td><%= link_to "#{schedule.to_s}", production_schedule_path(schedule) %></td>
+        <td><%=  number_with_precision(schedule.total_output, precision: 2, strip_insignificant_zeros: true) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -12,7 +12,7 @@
   <li><%= link_to 'home', day_path(Date.today) %></li>
   <li><%= link_to 'recipes', recipes_path %><li>
   <li><%= link_to 'production schedules', production_schedules_path %><li>
-  <li><%= link_to 'history', days_path %></li>
+  <li><%= link_to 'history', weeks_path %></li>
   <% if user_signed_in? %>
     <li class= 'right'><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <li class= 'right'><%= link_to 'Edit profile', edit_user_registration_path %></li>
