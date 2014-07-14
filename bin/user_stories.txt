@@ -1,18 +1,47 @@
-    As a user,
-    When I visit the main page
-    I want to be able to see a list of all my recipes in alphabetical order.
+As a user,
+When I visit the main page,
+I want to see all inventory sheets from the day, all active production rounds, and how much product has been sold during the day.
+
+RECIPES
 
 As a user,
-When I visit the main page
+When I visit the recipes page,
+I want to be able to see a list of all my recipes in alphabetical order.
+
+As a user,
+When I visit the recipes page,
 I should be able to click a link to create a new recipe
 
 As a user,
-When I visit the main page
-I want to be able to sort my recipes the date they were last created/updated.
+When I am creating a new recipe,
+I want to be required to enter a name and have the option of adding a note
 
-  As a user,
-  When I click on a recipe name,
-  I want to be able to view that recipe.
+As a user,
+When I am creating a new recipe,
+I want to enter all ingredients in grams
+
+As a user,
+When I am creating a new recipe,
+I want to be able to add as many or as few ingredients as I want
+
+As a user,
+When I am creating a new recipe,
+I want to have the option of entering a blank quantity field
+For times in which I want only a small unspecified amount of a certain ingredient
+
+As a user,
+When I am creating a new recipe,
+I want every new ingredient I add to be stored in the database
+so I can associate information by ingredient such as price or desired unit
+
+As a user,
+When I create a new recipe,
+I want to enter the ingredients in any specified ratios but have the computer convert the recipe to a standard batch size,
+because I will almost always be making the same amount of ice cream (maximum amount machine can churn).
+
+As a user,
+When I click on a recipe name,
+I want to be able to view that recipe.
 
 As a user,
 When I am viewing a recipe,
@@ -23,6 +52,88 @@ As a user,
 When I am viewing a recipe,
 I want to be able to click a button that will delete it.
 
-  As a user,
-  When I delete my account,
-  I want my recipes and inrgedients to disappear
+As a user,
+When I delete my account,
+I want my recipes and inrgedients to disappear
+
+PRODUCTION SCHEDULES
+
+As a user,
+I want to be able to create production schedules that specify how many batches of each recipe I want to make during a given time period,
+So I can plan my production throughout the week
+
+As a user,
+When I visit the main page,
+I want to be able to click a link that will bring up all my production schedules,
+So I can view current schedules, look ahead for ordering, and look into the past to plan future production schedules.
+
+As a user,
+When I go to the production schedules page,
+I want to be able to click a link to create a new production schedule.
+
+As a user,
+When I am creating a new production schedule,
+I want to enter the quantity of each ice cream I plan to make per batch size,
+because I will always be making a standard batch size.
+
+As a user,
+When I am creating a new production schedule,
+I want to specify the starting and ending date of that schedule
+
+As a user,
+After I create a production schedule,
+I want to be able to see how much of each ingredient I will need to carry out that round of production,
+So I can plan my orders from distributors
+
+As a user,
+When I am viewing a production schedule,
+I want to be able to click a link to edit that schedule,
+in case I make a mistake or want to make a change
+
+HISTORY
+As a user,
+I want to be able to view a history of past production schedules and inventory sheets,
+so I can review past information to make plans for the future.
+
+As a user,
+When I am on the main page
+I want to be able to click a link to view my history.
+
+As a user,
+When I am am viewing the history,
+I want it to be divided into days and weeks
+So that I can view information by day or by week and so it is better organized than just seeing a big list of days
+
+As a user,
+When I click on a week,
+I want to be able to access the day page for each day in that week, and view the amount of product sold during that week
+
+As a user,
+When I click on a day,
+I want to be able to view all inventory sheets for that day, view production schedules that were active during that day, and view how much product was sold during that day.
+
+INVENTORY
+
+As a user,
+I want to be able to enter starting inventory, ending inventory, and any product that was added during the course of the day,
+So I can see how much I sold during that day and determine if I am making too much or too little product available for sale each day.
+
+As a user,
+When I am creating an inventory sheet,
+I want to enter which employee conducted the inventory,
+so I know who to contact if there are any issues or I have any questions
+
+As a user,
+When I enter inventory,
+I want to do it in pounds,
+because it is easiest to measure ice cream according to weight
+
+As a user,
+When I enter inventory at the end of the day,
+I want the form to be automatically populated with the flavors that were entered at the beginning of the day or added during the course of the day,
+to save me some time.
+
+As a user,
+When I enter inventory,
+I want to be able to go back and change that information
+in case I made a mistake.
