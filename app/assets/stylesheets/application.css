@@ -55,7 +55,7 @@ article {
   color: white;
 }
 
-/*.quantity {
+.quantity {
   width: 50px;
 }
 
@@ -69,7 +69,7 @@ article {
 
 .production-scheudle-recipes-label {
   margin: 0 0 20px 0;
-}*/
+}
 
 .control-label {
   font-weight: bold;
@@ -90,7 +90,7 @@ article {
   margin-bottom: 10px;
 }
 
-/*.quantity-label {
+.quantity-label {
   margin-left: 180px;
 }
 
@@ -108,7 +108,7 @@ article {
 
 .form-submit {
   margin: 15px 0 0 180px;
-}*/
+}
 
 .links {
   text-align: center;
