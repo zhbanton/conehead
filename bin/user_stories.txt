@@ -1,3 +1,6 @@
+As a non-user
+you can't do anything.
+
 As a user,
 When I visit the main page,
 I want to see all inventory sheets from the day, all active production rounds, and how much product has been sold during the day.

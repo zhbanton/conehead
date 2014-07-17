@@ -122,3 +122,12 @@ article {
 .links a:visited {
   color: white;
 }
+
+.production-form {
+  margin-left: 12%
+}
+
+.production-submit {
+  margin-left: 100px;
+}
+

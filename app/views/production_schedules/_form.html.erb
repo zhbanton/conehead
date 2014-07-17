@@ -1,27 +1,29 @@
-<%= form_for @production_schedule do |f| %>
-  <div class="form-group">
-    <%= f.label :starting_date, class: "control-label" %>
-    <div class="controls">
-      <%= f.date_field :starting_date, autofocus: true, placeholder: "#{Date.today}" %>
+<div class="production-form">
+  <%= form_for @production_schedule do |f| %>
+    <div class="form-group">
+      <%= f.label :starting_date, class: "control-label" %>
+      <div class="controls">
+        <%= f.date_field :starting_date, autofocus: true, placeholder: "#{Date.today}" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :ending_date, class: "control-label" %>
-    <div class="controls">
-      <%= f.date_field :ending_date %>
+    <div class="form-group">
+      <%= f.label :ending_date, class: "control-label" %>
+      <div class="controls">
+        <%= f.date_field :ending_date %>
+      </div>
     </div>
-  </div>
-  <div class="production-scheudle-recipes-label"><strong>Flavors</strong></div>
-  <fieldset id="production-schedule-entries">
-    <div class="sub-form-headers"><span class="production-schedule-quantity-label">qty.</span><span class="production-schedule-item-label">name</span></div>
-    <ul>
-      <%= f.fields_for :production_schedule_entries do |entry| %>
-        <%= render 'production_schedule_entry_fields', f: entry %>
-      <% end %>
-    </ul>
-    <%= link_to_add_association 'add flavor', f, :production_schedule_entries, 'data-association-insertion-node' => "#production-schedule-entries ul", 'data-association-insertion-method' => "append" %>
-  </fieldset>
-  <div class="form-submit">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="production-scheudle-recipes-label"><strong>Flavors</strong></div>
+    <fieldset id="production-schedule-entries">
+      <div class="sub-form-headers"><span class="production-schedule-quantity-label">qty.</span><span class="production-schedule-item-label">name</span></div>
+      <ul>
+        <%= f.fields_for :production_schedule_entries do |entry| %>
+          <%= render 'production_schedule_entry_fields', f: entry %>
+        <% end %>
+      </ul>
+      <%= link_to_add_association 'add flavor', f, :production_schedule_entries, 'data-association-insertion-node' => "#production-schedule-entries ul", 'data-association-insertion-method' => "append" %>
+    </fieldset>
+    <div class="production-submit form-submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
