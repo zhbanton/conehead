@@ -1,10 +1,12 @@
-<li class="control-group nested-fields">
-  <div class="controls">
-    <%= f.text_field :quantity, class: "quantity" %><span class="unit">g</span>
-    <%= f.fields_for :ingredient do |recipe_entry_ingredient| %>
-      <%= recipe_entry_ingredient.text_field :name %>
-      <%= recipe_entry_ingredient.hidden_field :user_id, value: current_user.id %>
-    <% end %>
-    <%= link_to_remove_association 'remove', f %>
-  <div>
-</li>
+<div class="nested-fields">
+  <li class="control-group nested-fields">
+    <div class="controls">
+      <%= f.text_field :quantity, class: "quantity" %><span class="unit">g</span>
+      <%= f.fields_for :ingredient do |recipe_entry_ingredient| %>
+        <%= recipe_entry_ingredient.text_field :name %>
+        <%= recipe_entry_ingredient.hidden_field :user_id, value: current_user.id %>
+      <% end %>
+      <%= link_to_remove_association 'remove', f %>
+    <div>
+  </li>
+</div>
