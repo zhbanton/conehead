@@ -46,7 +46,7 @@ class ProductionSchedulesController < ApplicationController
   end
 
   def set_production_schedule
-    @production_schedule = ProductionSchedule.find(params[:id])
+    @production_schedule = ProductionSchedule.includes(:recipes).find(params[:id])
   end
 
   def set_recipe_select
