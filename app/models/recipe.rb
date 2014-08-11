@@ -18,7 +18,8 @@ class Recipe < ActiveRecord::Base
   end
 
   def to_batch_size
-    recipe_entries.each { |entry| entry.quantity *= (User::BATCH_SIZE / entry.recipe.yield) }
+
+    recipe_entries.each { |entry| entry.quantity *= (User::BATCH_SIZE / self.yield) }
     self
   end
 
