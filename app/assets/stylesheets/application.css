@@ -131,3 +131,12 @@ article {
   margin-left: 100px;
 }
 
+path {
+  stroke: steelblue;
+  stroke-width: 1;
+  fill: none;
+}
+
+#graph {
+  margin-left: 50px;
+}

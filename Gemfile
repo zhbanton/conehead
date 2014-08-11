@@ -17,11 +17,11 @@ gem 'spring', group: :development
 gem 'devise'
 gem 'cocoon'
 gem 'validates_timeliness', '~> 3.0'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+gem 'therubyracer'
+gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
-gem "d3-rails"
+gem 'd3-rails'
 
 group :production do
   gem 'rails_12factor'
@@ -45,3 +45,4 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem 'bullet', group: :development

@@ -1,6 +1,7 @@
 class Recipe < ActiveRecord::Base
 
   before_create :quantity_to_zero, :downcase_name
+
   belongs_to :user
   has_many :recipe_entries, dependent: :destroy
   has_many :ingredients, through: :recipe_entries

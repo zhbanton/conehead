@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :weeks, only: [:index, :show]
 
+  resources :graphs, only: [:index]
+
   root to: "days#show", id: Date.today.to_formatted_s
 
 end
