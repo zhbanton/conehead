@@ -4,7 +4,7 @@ class ProductionSchedulesController < ApplicationController
   before_action :set_recipe_select, only: [:new, :edit, :create, :update]
 
   def index
-    @production_schedules = current_user.production_schedules.order(starting_date: :desc)
+    @production_schedules = current_user.production_schedules.includes(:production_schedule_entries).order(starting_date: :desc)
   end
 
   def show
