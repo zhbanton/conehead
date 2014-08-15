@@ -5,9 +5,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :recipe_entries, dependent: :destroy
   has_many :ingredients, through: :recipe_entries
-  has_many :production_schedule_entries
-  has_many :production_schedules, through: :production_schedule_entries
-  has_many :beginning_of_day_inventory_entries
+  has_many :entries
+  has_many :production_schedules, through: :entries, source: :production_schedule
 
   accepts_nested_attributes_for :recipe_entries, reject_if: proc { |attributes| attributes['quantity'].blank? && attributes['ingredient_attributes']['name'].blank? }, allow_destroy: true
 

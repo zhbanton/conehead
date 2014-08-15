@@ -4,7 +4,7 @@ class ProductionSchedulesController < ApplicationController
   before_action :set_recipe_select, only: [:new, :edit, :create, :update]
 
   def index
-    @production_schedules = current_user.production_schedules.includes(:production_schedule_entries).order(starting_date: :desc)
+    @production_schedules = current_user.production_schedules.includes(:entries).order(starting_date: :desc)
   end
 
   def show
@@ -42,7 +42,7 @@ class ProductionSchedulesController < ApplicationController
   private
 
   def production_schedule_params
-    params.require(:production_schedule).permit(:starting_date, :ending_date, production_schedule_entries_attributes: [:id, :quantity, :production_schedule_id, :recipe_id, :_destroy])
+    params.require(:production_schedule).permit(:starting_date, :ending_date, entries_attributes: [:id, :quantity, :document_id, :document_type, :recipe_id, :_destroy])
   end
 
   def set_production_schedule

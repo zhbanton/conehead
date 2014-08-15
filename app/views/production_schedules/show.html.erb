@@ -5,7 +5,7 @@
     <th>Flavor</th>
   </thead>
   <tbody>
-  <% @production_schedule.production_schedule_entries.each do |entry| %>
+  <% @production_schedule.entries.each do |entry| %>
     <tr>
       <td><%=  number_with_precision(entry.quantity, precision: 2, strip_insignificant_zeros: true) %></td>
       <td><%= entry.recipe.name %></td>

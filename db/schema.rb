@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714005829) do
+ActiveRecord::Schema.define(version: 20140814212106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,17 +25,6 @@ ActiveRecord::Schema.define(version: 20140714005829) do
 
   add_index "added_inventories", ["user_id"], name: "index_added_inventories_on_user_id", using: :btree
 
-  create_table "added_inventory_entries", force: true do |t|
-    t.decimal  "quantity"
-    t.integer  "recipe_id"
-    t.integer  "added_inventory_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "added_inventory_entries", ["added_inventory_id"], name: "index_added_inventory_entries_on_added_inventory_id", using: :btree
-  add_index "added_inventory_entries", ["recipe_id"], name: "index_added_inventory_entries_on_recipe_id", using: :btree
-
   create_table "ending_inventories", force: true do |t|
     t.integer  "user_id"
     t.string   "employee"
@@ -46,16 +35,17 @@ ActiveRecord::Schema.define(version: 20140714005829) do
 
   add_index "ending_inventories", ["user_id"], name: "index_ending_inventories_on_user_id", using: :btree
 
-  create_table "ending_inventory_entries", force: true do |t|
-    t.integer  "recipe_id"
-    t.integer  "ending_inventory_id"
+  create_table "entries", force: true do |t|
     t.decimal  "quantity"
+    t.integer  "document_id"
+    t.string   "document_type"
+    t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ending_inventory_entries", ["ending_inventory_id"], name: "index_ending_inventory_entries_on_ending_inventory_id", using: :btree
-  add_index "ending_inventory_entries", ["recipe_id"], name: "index_ending_inventory_entries_on_recipe_id", using: :btree
+  add_index "entries", ["document_id", "document_type"], name: "index_entries_on_document_id_and_document_type", using: :btree
+  add_index "entries", ["recipe_id"], name: "index_entries_on_recipe_id", using: :btree
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
@@ -65,17 +55,6 @@ ActiveRecord::Schema.define(version: 20140714005829) do
   end
 
   add_index "ingredients", ["user_id"], name: "index_ingredients_on_user_id", using: :btree
-
-  create_table "production_schedule_entries", force: true do |t|
-    t.decimal  "quantity"
-    t.integer  "production_schedule_id"
-    t.integer  "recipe_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "production_schedule_entries", ["production_schedule_id"], name: "index_production_schedule_entries_on_production_schedule_id", using: :btree
-  add_index "production_schedule_entries", ["recipe_id"], name: "index_production_schedule_entries_on_recipe_id", using: :btree
 
   create_table "production_schedules", force: true do |t|
     t.date     "starting_date"
@@ -116,17 +95,6 @@ ActiveRecord::Schema.define(version: 20140714005829) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "starting_inventory_entries", force: true do |t|
-    t.integer  "recipe_id"
-    t.integer  "starting_inventory_id"
-    t.decimal  "quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "starting_inventory_entries", ["recipe_id"], name: "index_starting_inventory_entries_on_recipe_id", using: :btree
-  add_index "starting_inventory_entries", ["starting_inventory_id"], name: "index_starting_inventory_entries_on_starting_inventory_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

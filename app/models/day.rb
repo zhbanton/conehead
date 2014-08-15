@@ -6,7 +6,7 @@ class Day
 
   def self.all
     if StartingInventory.all.empty?
-      return new(Date.today)
+      return [new(Date.today)]
     end
     first_inventory = StartingInventory.all.order(:inventory_date).first.inventory_date
     (first_inventory..Date.today).map{ |day| new(day) }
@@ -51,10 +51,10 @@ class Day
 
   def net_sales_by_product(user)
     product_sold = {}
-    return product_sold if starting_inventory(user) == nil
-    return net_sales_without_ending_inventory(user) if ending_inventory(user) == nil
+    return product_sold if starting_inventory(user).nil?
+    return net_sales_without_ending_inventory(user) if ending_inventory(user).nil?
 
-    starting_inventory(user).starting_inventory_entries.each do |entry|
+    starting_inventory(user).entries.each do |entry|
       if product_sold[entry.recipe.name]
         product_sold[entry.recipe.name] += entry.quantity
       else
@@ -63,7 +63,7 @@ class Day
     end
 
     if added_inventory(user).present?
-      added_inventory(user).added_inventory_entries.each do |entry|
+      added_inventory(user).entries.each do |entry|
         if product_sold[entry.recipe.name]
           product_sold[entry.recipe.name] += entry.quantity
         else
@@ -72,7 +72,7 @@ class Day
       end
     end
 
-    ending_inventory(user).ending_inventory_entries.each do |entry|
+    ending_inventory(user).entries.each do |entry|
       if product_sold[entry.recipe.name]
         product_sold[entry.recipe.name] -= entry.quantity
       else
@@ -86,16 +86,15 @@ class Day
     net_sales_by_product(user).values.reduce(:+)
   end
 
-
   private
 
   def net_sales_without_ending_inventory(user)
     products = {}
-    starting_inventory(user).starting_inventory_entries.each do |entry|
+    starting_inventory(user).entries.each do |entry|
       products[entry.recipe.name] = 0
     end
     if added_inventory(user)
-      added_inventory(user).added_inventory_entries.each do |entry|
+      added_inventory(user).entries.each do |entry|
         products[entry.recipe.name] = 0
       end
     end

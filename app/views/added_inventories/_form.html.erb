@@ -5,11 +5,11 @@
     <fieldset id="added-inventory-entries">
       <div class="sub-form-headers"><span class="inventory-quantity-label">qty.</span><span class="inventory-item-label">name</span></div>
       <ul>
-        <%= f.fields_for :added_inventory_entries do |entry| %>
-          <%= render 'added_inventory_entry_fields', f: entry %>
+        <%= f.fields_for :entries do |entry| %>
+          <%= render 'entry_fields', f: entry %>
         <% end %>
       </ul>
-      <%= link_to_add_association 'add flavor', f, :added_inventory_entries, 'data-association-insertion-node' => "#added-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+      <%= link_to_add_association 'add flavor', f, :entries, 'data-association-insertion-node' => "#entries ul", 'data-association-insertion-method' => "append" %>
     </fieldset>
     <%= f.hidden_field :inventory_date, value: @day.date %>
     <div class="form-submit">

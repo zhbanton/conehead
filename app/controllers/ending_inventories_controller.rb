@@ -44,7 +44,7 @@ class EndingInventoriesController < ApplicationController
   end
 
   def ending_inventory_params
-    params.require(:ending_inventory).permit(:inventory_date, :employee, ending_inventory_entries_attributes: [:id, :quantity, :ending_inventory_id, :recipe_id, :_destroy])
+    params.require(:ending_inventory).permit(:inventory_date, :employee, entries_attributes: [:id, :quantity, :document_id, :document_type, :recipe_id, :_destroy])
   end
 
 end
