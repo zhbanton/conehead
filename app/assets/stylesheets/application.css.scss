@@ -84,12 +84,24 @@ h3 {
   margin-left: 55px;
 }
 
-.nested-fields {
-  margin-bottom: 15px;
+.production-schedule-item-label {
+  margin-left: 98px;
+}
+
+.inventory-item-label {
+  margin-left: 65px;
 }
 
 .recipe-form {
   margin-left: 42%;
+}
+
+.production-form {
+  margin-left: 45%;
+}
+
+.inventory-form {
+  margin-left: 45%;
 }
 
 .sub-form {
@@ -98,4 +110,6 @@ h3 {
 
 .nested-fields {
   margin-left: -40px;
+  margin-bottom: 15px;
 }
+

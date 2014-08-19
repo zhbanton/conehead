@@ -15,7 +15,9 @@
           <%= render 'starting_inventory_entry_fields', f: entry %>
         <% end %>
       </ul>
-      <%= link_to_add_association 'add flavor', f, :starting_inventory_entries, 'data-association-insertion-node' => "#starting-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+      <div class="add-line controls">
+        <%= link_to_add_association 'add flavor', f, :starting_inventory_entries, 'data-association-insertion-node' => "#starting-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+      </div>
     </fieldset>
     <%= f.hidden_field :inventory_date, value: @day.date %>
     <div class="inventory-submit form-submit">
