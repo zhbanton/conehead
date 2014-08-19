@@ -2,7 +2,7 @@
 
 Conehead is a recipe storage and inventory management application for ice cream shops.  It is the first project I completed as a student at General Assembly's Web Development Immersive Program.  Features were inspired by the needs for an ice cream shop a close friend of mine is planning on opening in Brooklyn.
 
-Sign in as <b>guest@example.com (password: 'password')<b> to view data that is already populated or create your own account!
+Sign in as <b>guest@example.com (password: 'password')</b> to view data that is already populated or create your own account!
 
 Things you may want to cover:
 
