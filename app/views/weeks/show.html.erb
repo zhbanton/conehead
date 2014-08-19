@@ -31,7 +31,7 @@
       <tr><td></td><td></td></tr>
       <tr>
         <td><strong>total</strong></td>
-        <td><%= number_with_precision(@net_sales, precision: 2, strip_insignificant_zeros: true) %></td>
+        <td><%= number_with_precision(@week.net_sales(current_user), precision: 2, strip_insignificant_zeros: true) %></td>
       </tr>
     </table>
   </div>

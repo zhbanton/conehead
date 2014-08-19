@@ -1,7 +1,14 @@
 <h3>History</h3>
 <br>
 <table class="table">
-<% @weeks.each do |week| %>
-  <tr><td><%= link_to week.to_s, week_path(week) %></td></tr>
-<% end %>
+  <thead>
+    <th>Week</th>
+    <th>Total Sales (lbs.)</th>
+  </thead>
+  <% @weeks.each do |week| %>
+    <tr>
+      <td><%= link_to week.to_s, week_path(week) %></td>
+      <td><%= week.net_sales(current_user)%> </td>
+    </tr>
+  <% end %>
 </table>
