@@ -1,3 +1,5 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,14 +12,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require twitter-bootstrap-static/bootstrap
  *= require_tree .
  *= require_self
  */
-form {
-  display: inline-block;
-  margin-left: 31%;
-}
 
 ul {
   list-style-type: none;
@@ -31,10 +28,6 @@ textarea {
 h3 {
   text-align: center;
   margin-bottom: 15px;
-}
-
-article {
-  text-align: center;
 }
 
 .table-striped {
@@ -55,26 +48,6 @@ article {
   color: white;
 }
 
-.quantity {
-  width: 50px;
-}
-
-.nested-fields {
-  margin-left: -25px;
-}
-
-.recipe-ingredients-label {
-  margin: 0 0 20px 122px;
-}
-
-.production-scheudle-recipes-label {
-  margin: 0 0 20px 0;
-}
-
-.control-label {
-  font-weight: bold;
-}
-
 .unit {
   padding: 0 10px 0 5px;
   color: gray;
@@ -90,30 +63,6 @@ article {
   margin-bottom: 10px;
 }
 
-.quantity-label {
-  margin-left: 180px;
-}
-
-.item-label {
-  margin-left: 70px;
-}
-
-.production-schedule-quantity-label {
-  margin-left: 0;
-}
-
-.production-schedule-item-label {
-  margin-left: 115px;
-}
-
-.inventory-item-label {
-  margin-left: 80px;
-}
-
-.form-submit {
-  margin: 15px 0 0 180px;
-}
-
 .links {
   text-align: center;
   margin-top: 40px;
@@ -127,18 +76,26 @@ article {
   color: white;
 }
 
-.production-form {
-  margin-left: 12%
-}
-.inventory-form {
-  margin-left: 12%;
+.quantity {
+  width: 50px;
 }
 
-.inventory-submit {
-  margin-left: 100px;
+.recipe-ingredient-label {
+  margin-left: 55px;
 }
 
-.production-submit {
-  margin-left: 100px;
+.nested-fields {
+  margin-bottom: 15px;
 }
 
+.recipe-form {
+  margin-left: 42%;
+}
+
+.sub-form {
+  margin-left: -15px;
+}
+
+.nested-fields {
+  margin-left: -40px;
+}

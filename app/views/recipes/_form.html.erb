@@ -1,30 +1,33 @@
-<%= form_for @recipe, :html => { :class => "form-horizontal" } do |f| %>
-  <div class="form-group">
-    <%= f.label :name, class: "control-label" %>
-    <div class="controls">
-      <%= f.text_field :name %>
+<div class="recipe-form">
+  <%= form_for @recipe, :html => { :class => "form-horizontal" } do |f| %>
+    <div class="form-group">
+      <%= f.label :name, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
     </div>
-  </div>
-  <div class="recipe-ingredients-label"><strong>Ingredients</strong></div>
-  <fieldset id="recipe-ingredients">
-    <div class="sub-form-headers"><span class="quantity-label">qty.</span><span class="item-label">name</span></div>
-    <ul>
-      <%= f.fields_for :recipe_entries do |entry| %>
-        <%= render 'recipe_entry_fields', f: entry %>
-      <% end %>
-    </ul>
-    <div class="add-line controls">
-      <%= link_to_add_association 'add ingredient', f, :recipe_entries, 'data-association-insertion-node' => "#recipe-ingredients ul", 'data-association-insertion-method' => "append", :wrap_object => Proc.new { |recipe_entry| recipe_entry.build_ingredient; recipe_entry } %>
+    <div class="sub-form">
+      <div class="recipe-ingredients-label"><strong>Ingredients</strong></div>
+      <fieldset id="recipe-ingredients">
+        <div class="sub-form-headers"><span class="quantity-label">qty.</span><span class="recipe-ingredient-label">name</span></div>
+        <ul>
+          <%= f.fields_for :recipe_entries do |entry| %>
+            <%= render 'recipe_entry_fields', f: entry %>
+          <% end %>
+        </ul>
+        <div class="add-line controls">
+          <%= link_to_add_association 'add ingredient', f, :recipe_entries, 'data-association-insertion-node' => "#recipe-ingredients ul", 'data-association-insertion-method' => "append", :wrap_object => Proc.new { |recipe_entry| recipe_entry.build_ingredient; recipe_entry } %>
+        </div>
+      </fieldset>
     </div>
-  </fieldset>
-  <div class="form-group">
-    <%= f.label :note, class: "control-label" %>
-    <div class="controls">
-      <%= f.text_area :note %>
+    <div class="form-group">
+      <%= f.label :note, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_area :note %>
+      </div>
     </div>
-  </div>
-  <div class="form-submit">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+    <div class="form-submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
