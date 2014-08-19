@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require cocoon
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require turbolinks
 

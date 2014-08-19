@@ -1,4 +1,4 @@
-<h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
+<h3>Added Inventory for <%= @day.date.to_formatted_s(:long_ordinal) %></h3>
 <div class="inventory-form">
   <%= form_for [@day, @added_inventory] do |f| %>
     <div class="added-inventory-recipes-label"><strong>Flavors</strong></div>
@@ -9,10 +9,12 @@
           <%= render 'added_inventory_entry_fields', f: entry %>
         <% end %>
       </ul>
-      <%= link_to_add_association 'add flavor', f, :added_inventory_entries, 'data-association-insertion-node' => "#added-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+      <div class="add-line controls">
+        <%= link_to_add_association 'add flavor', f, :added_inventory_entries, 'data-association-insertion-node' => "#added-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+      </div>
     </fieldset>
     <%= f.hidden_field :inventory_date, value: @day.date %>
-    <div class="form-submit">
+    <div class="inventory-submit form-submit">
       <%= f.submit %>
     </div>
   <% end %>

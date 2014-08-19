@@ -1,4 +1,7 @@
+<h3>History</h3>
+<br>
+<table class="table">
 <% @weeks.each do |week| %>
-  <%= link_to week.to_s, week_path(week) %>
-  <br>
+  <tr><td><%= link_to week.to_s, week_path(week) %></td></tr>
 <% end %>
+</table>

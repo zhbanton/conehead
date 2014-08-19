@@ -1,29 +1,38 @@
 <h3>Week of <%= @week.to_s %></h3>
-<% @week.days.each do |day| %>
-  <%= link_to_if Day.is_day?(day.to_s), "#{day.to_formatted_s(:long_ordinal)}", day_path(day.to_s) %>
-  <br>
-<% end %>
-<h5>Production Schedules</h5>
-<ul>
-  <% @production_schedules.each do |schedule| %>
-    <li><%= link_to schedule.to_s, production_schedule_path(schedule) %></li>
-  <% end %>
-</ul>
-<table class="table table-striped">
-  <caption>Product Sold</caption>
-  <thead>
-    <th>Flavor</th>
-    <th>Quantity Sold (lbs)</th>
-  </thead>
-  <% @net_sales_by_product.each do |recipe, quantity| %>
-    <tr>
-      <td><%= recipe %></td>
-      <td><%= number_with_precision(quantity, precision: 2, strip_insignificant_zeros: true) %></td>
-    </tr>
-  <% end %>
-  <tr><td></td><td></td></tr>
-  <tr>
-    <td><strong>total</strong></td>
-    <td><%= number_with_precision(@net_sales, precision: 2, strip_insignificant_zeros: true) %></td>
-  </tr>
-</table>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <% @week.days.each do |day| %>
+        <tr><td><%= link_to_if Day.is_day?(day.to_s), "#{day.to_formatted_s(:long_ordinal)}", day_path(day.to_s) %></td></tr>
+      <% end %>
+    </table>
+    </br>
+    <table class="table">
+      <thead>
+        <th>Active Production Schedules</th>
+      </thead>
+      <% @production_schedules.each do |schedule| %>
+        <tr><td><%= link_to schedule.to_s, production_schedule_path(schedule) %></td></tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <th>Flavor</th>
+        <th>Quantity Sold (lbs)</th>
+      </thead>
+      <% @net_sales_by_product.each do |recipe, quantity| %>
+        <tr>
+          <td><%= recipe %></td>
+          <td><%= number_with_precision(quantity, precision: 2, strip_insignificant_zeros: true) %></td>
+        </tr>
+      <% end %>
+      <tr><td></td><td></td></tr>
+      <tr>
+        <td><strong>total</strong></td>
+        <td><%= number_with_precision(@net_sales, precision: 2, strip_insignificant_zeros: true) %></td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -20,7 +20,9 @@
           <%= render 'production_schedule_entry_fields', f: entry %>
         <% end %>
       </ul>
-      <%= link_to_add_association 'add flavor', f, :production_schedule_entries, 'data-association-insertion-node' => "#production-schedule-entries ul", 'data-association-insertion-method' => "append" %>
+      <div class="add-line controls">
+        <%= link_to_add_association 'add flavor', f, :production_schedule_entries, 'data-association-insertion-node' => "#production-schedule-entries ul", 'data-association-insertion-method' => "append" %>
+      </div>
     </fieldset>
     <div class="production-submit form-submit">
       <%= f.submit %>

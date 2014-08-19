@@ -1,23 +1,27 @@
-<h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
-<%= form_for [@day, @ending_inventory] do |f| %>
-  <div class="form-group">
-    <%= f.label :employee, class: "control-label" %>
-    <div class="controls">
-      <%= f.text_field :employee %>
+<h3>Ending Inventory for <%= @day.date.to_formatted_s(:long_ordinal) %></h3>
+<div class="inventory-form">
+  <%= form_for [@day, @ending_inventory] do |f| %>
+    <div class="form-group">
+      <%= f.label :employee, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :employee %>
+      </div>
     </div>
-  </div>
-  <div class="ending-inventory-recipes-label"><strong>Flavors</strong></div>
-  <fieldset id="ending-inventory-entries">
-    <div class="sub-form-headers"><span class="ending-inventory-quantity-label">qty.</span><span class="ending-inventory-item-label">name</span></div>
-    <ul>
-      <%= f.fields_for :ending_inventory_entries do |entry| %>
-        <%= render 'ending_inventory_entry_fields', f: entry %>
-      <% end %>
-    </ul>
-    <%= link_to_add_association 'add flavor', f, :ending_inventory_entries, 'data-association-insertion-node' => "#ending-inventory-entries ul", 'data-association-insertion-method' => "append" %>
-  </fieldset>
-  <%= f.hidden_field :inventory_date, value: @day.date %>
-  <div class="form-submit">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="ending-inventory-recipes-label"><strong>Flavors</strong></div>
+    <fieldset id="ending-inventory-entries">
+      <div class="sub-form-headers"><span class="inventory-quantity-label">qty.</span><span class="inventory-item-label">name</span></div>
+      <ul>
+        <%= f.fields_for :ending_inventory_entries do |entry| %>
+          <%= render 'ending_inventory_entry_fields', f: entry %>
+        <% end %>
+      </ul>
+      <div class="add-line controls">
+        <%= link_to_add_association 'add flavor', f, :ending_inventory_entries, 'data-association-insertion-node' => "#ending-inventory-entries ul", 'data-association-insertion-method' => "append" %>
+      </div>
+    </fieldset>
+    <%= f.hidden_field :inventory_date, value: @day.date %>
+    <div class="inventory-submit form-submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
