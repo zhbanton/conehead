@@ -1,19 +1,22 @@
 <h3><%= @recipe.name %></h3>
-    <table class="table table-striped">
-      <thead>
-        <th>Quantity (g)</th>
-        <th>Ingredient</th>
-      </thead>
-      <% @recipe.recipe_entries.each do |entry| %>
-        <tr>
-          <% if entry.quantity > 0 %>
-            <td><%= number_with_precision(entry.quantity, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% end %>
-          <td><%= entry.ingredient.name %></td>
-        </tr>
-      <% end %>
-    </table>
-  <article><%= simple_format @recipe.note %></article>
+  <table class="table table-striped">
+    <thead>
+      <th>Quantity (g)</th>
+      <th>Ingredient</th>
+    </thead>
+    <% @recipe.recipe_entries.each do |entry| %>
+      <tr>
+        <% if entry.quantity > 0 %>
+          <td><%= number_with_precision(entry.quantity, precision: 2, strip_insignificant_zeros: true) %></td>
+        <% end %>
+        <td><%= entry.ingredient.name %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% if @recipe.note.present? %>
+    <p class="notes"><strong>notes</strong></p>
+    <div class="notes-text"><%= simple_format @recipe.note %></div>
+  <% end %>
 <br>
 <div class= "links">
   <span class="label label-info"><%= link_to 'recipes', recipes_path %></span>
