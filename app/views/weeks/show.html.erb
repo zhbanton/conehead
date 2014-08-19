@@ -11,7 +11,7 @@
       <thead>
         <th>Active Production Schedules</th>
       </thead>
-      <% @production_schedules.each do |schedule| %>
+      <% @week.production_schedules(current_user).each do |schedule| %>
         <tr><td><%= link_to schedule.to_s, production_schedule_path(schedule) %></td></tr>
       <% end %>
     </table>
@@ -22,7 +22,7 @@
         <th>Flavor</th>
         <th>Quantity Sold (lbs)</th>
       </thead>
-      <% @net_sales_by_product.each do |recipe, quantity| %>
+      <% @week.net_sales_by_product(current_user).each do |recipe, quantity| %>
         <tr>
           <td><%= recipe %></td>
           <td><%= number_with_precision(quantity, precision: 2, strip_insignificant_zeros: true) %></td>
