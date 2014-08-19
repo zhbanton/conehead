@@ -16,7 +16,7 @@ Sign in as <b>guest@example.com (password: 'password')</b> to view data that is 
 <b>Production Schedules</b>
 
 * Plan ahead how many batches of each flavor you will need to produce during a given period of time.
-* View how much of each ingredient you will need to fulfill your production cycle.
+* View how much of each ingredient you will need in stock to fulfill your production cycle.
 
 <b>Inventory Management</b>
 
@@ -28,7 +28,3 @@ Sign in as <b>guest@example.com (password: 'password')</b> to view data that is 
 * Go back in time to view and edit sales figures and inventory check-ins from past business days.
 * View sales figures on a weekly basis.
 
-<b>Hire the Developer</b>
-
-*http://www.linkedin.com/pub/zack-banton/64/774/213/
-*https://angel.co/zack-banton
