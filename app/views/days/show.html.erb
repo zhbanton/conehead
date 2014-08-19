@@ -1,64 +1,68 @@
-<h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
-<div class="row">
-  <div class="col-md-6">
-    <table class="table">
-      <thead>
-        <th>Inventory</th>
-      </thead>
-      <tr><td>
-        <% if @starting_inventory.present? %>
-          <%= link_to "Beginning Of Day Inventory", edit_day_starting_inventory_path(@day, @starting_inventory) %>
-        <% else %>
-          <%= link_to "Beginning Of Day Inventory", new_day_starting_inventory_path(@day) %>
+<% if user_signed_in? %>
+  <h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+          <th>Inventory</th>
+        </thead>
+        <tr><td>
+          <% if @day.starting_inventory(current_user).present? %>
+            <%= link_to "Beginning Of Day Inventory", edit_day_starting_inventory_path(@day, @day.starting_inventory(current_user)) %>
+          <% else %>
+            <%= link_to "Beginning Of Day Inventory", new_day_starting_inventory_path(@day) %>
+          <% end %>
+        </td></tr>
+        <tr><td>
+          <% if @day.added_inventory(current_user).present? %>
+            <%= link_to "Add Inventory", edit_day_added_inventory_path(@day, @day.added_inventory(current_user)) %>
+          <% else %>
+            <%= link_to "Add Inventory", new_day_added_inventory_path(@day) %>
+          <% end %>
+        </td></tr>
+        <tr><td>
+          <% if @day.ending_inventory(current_user).present? %>
+            <%= link_to "End Of Day Inventory", edit_day_ending_inventory_path(@day, @day.ending_inventory(current_user)) %>
+          <% else %>
+            <%= link_to "End Of Day Inventory", new_day_ending_inventory_path(@day) %>
+          <% end %>
+        </td></tr>
+      </table>
+      <br>
+      <table class="table">
+        <thead>
+          <th>Active Production Schedules</th>
+        </thead>
+        <% @day.production_schedules(current_user).each do |schedule| %>
+          <tr><td><%= link_to schedule.to_s, production_schedule_path(schedule) %></td></tr>
         <% end %>
-      </td></tr>
-      <tr><td>
-        <% if @added_inventory.present? %>
-          <%= link_to "Add Inventory", edit_day_added_inventory_path(@day, @added_inventory) %>
-        <% else %>
-          <%= link_to "Add Inventory", new_day_added_inventory_path(@day) %>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <thead>
+          <th>Flavor</th>
+          <th>Quantity Sold (lbs)</th>
+        </thead>
+        <% @day.net_sales_by_product(current_user).each do |recipe, quantity| %>
+          <tr>
+            <td><%= recipe %></td>
+            <td><%= number_with_precision(quantity, precision: 2, strip_insignificant_zeros: true) %></td>
+          </tr>
         <% end %>
-      </td></tr>
-      <tr><td>
-        <% if @ending_inventory.present? %>
-          <%= link_to "End Of Day Inventory", edit_day_ending_inventory_path(@day, @ending_inventory) %>
-        <% else %>
-          <%= link_to "End Of Day Inventory", new_day_ending_inventory_path(@day) %>
-        <% end %>
-      </td></tr>
-    </table>
-    <br>
-
-    <table class="table">
-      <thead>
-        <th>Active Production Schedules</th>
-      </thead>
-      <% @production_schedules.each do |schedule| %>
-        <tr><td><%= link_to schedule.to_s, production_schedule_path(schedule) %></td></tr>
-      <% end %>
-    </table>
-
-  </div>
-  <div class="col-md-6">
-    <table class="table table-striped">
-      <thead>
-        <th>Flavor</th>
-        <th>Quantity Sold (lbs)</th>
-      </thead>
-      <% @net_sales_by_product.each do |recipe, quantity| %>
+        <tr><td></td><td></td></tr>
         <tr>
-          <td><%= recipe %></td>
-          <td><%= number_with_precision(quantity, precision: 2, strip_insignificant_zeros: true) %></td>
+          <td><strong>total</strong></td>
+          <td><%= number_with_precision(@day.net_sales(current_user), precision: 2, strip_insignificant_zeros: true) %></td>
         </tr>
-      <% end %>
-      <tr><td></td><td></td></tr>
-      <tr>
-        <td><strong>total</strong></td>
-        <td><%= number_with_precision(@net_sales, precision: 2, strip_insignificant_zeros: true) %></td>
-      </tr>
-    </table>
+      </table>
+    </div>
   </div>
-</div>
+<% else %>
+  <h3>Welcome to Conehead</h3>
+  <%= link_to 'sign in', user_session_path %>
+  <%= link_to 'sign up', new_user_registration_path %>
+<% end %>
 
 
 

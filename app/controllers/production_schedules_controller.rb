@@ -1,6 +1,7 @@
 class ProductionSchedulesController < ApplicationController
 
-  before_action :authenticate_user!, :set_production_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_production_schedule, only: [:show, :edit, :update, :destroy]
   before_action :set_recipe_select, only: [:new, :edit, :create, :update]
 
   def index
