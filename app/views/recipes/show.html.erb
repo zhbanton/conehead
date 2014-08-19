@@ -16,6 +16,7 @@
   <article><%= simple_format @recipe.note %></article>
 <br>
 <div class= "links">
+  <span class="label label-info"><%= link_to 'recipes', recipes_path %></span>
   <span class="label label-info"><%= link_to 'edit', edit_recipe_path(@recipe) %></span>
   <span class="label label-info"><%= link_to 'delete', recipe_path(@recipe, recipe: { is_active: false }), method: :patch, data: {confirm: "Are you sure you want to delete recipe for #{@recipe.name}?"} %></span>
 </div>
