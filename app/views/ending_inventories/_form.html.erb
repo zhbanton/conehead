@@ -1,4 +1,4 @@
-<h3><%= @day.date.to_formatted_s(:long_ordinal) %></h3>
+<h3>Ending Inventory for <%= @day.date.to_formatted_s(:long_ordinal) %></h3>
 <div class="inventory-form">
   <%= form_for [@day, @ending_inventory] do |f| %>
     <div class="form-group">
