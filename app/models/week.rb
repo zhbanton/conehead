@@ -7,10 +7,10 @@ class Week
 
   def self.all
     if StartingInventory.all.empty?
-      return days_to_weeks(Date.today, Date.today + 2.weeks)
+      return days_to_weeks(Date.today, Date.today)
     end
     first_inventory = StartingInventory.all.order(:inventory_date).first.inventory_date
-    days_to_weeks(first_inventory, Date.today + 2.weeks)
+    days_to_weeks(first_inventory, Date.today)
   end
 
   def self.find(param)
