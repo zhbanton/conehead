@@ -106,6 +106,10 @@ article {
   margin-left: 115px;
 }
 
+.inventory-item-label {
+  margin-left: 80px;
+}
+
 .form-submit {
   margin: 15px 0 0 180px;
 }
@@ -125,6 +129,13 @@ article {
 
 .production-form {
   margin-left: 12%
+}
+.inventory-form {
+  margin-left: 12%;
+}
+
+.inventory-submit {
+  margin-left: 100px;
 }
 
 .production-submit {
