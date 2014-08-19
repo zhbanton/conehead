@@ -8,24 +8,27 @@ Sign in as <b>guest@example.com (password: 'password')</b> to view data that is 
 
 ==Features:
 
-* Ruby version
+<b>Recipes</b>
 
-* System dependencies
+* Create, view, and edit all your ice cream recipes; all ingredients are stored in grams.
+* When viewing recipes, all quantities are automatically converted to the amount needed to maximize capacity of a 24 quart batch freezer.
 
-* Configuration
+<b>Production Schedules</b>
 
-* Database creation
+* Plan ahead how many batches of each flavor you will need to produce during a given period of time.
+* View how much of each ingredient you will need to fulfill your production cycle.
 
-* Database initialization
+<b>Inventory Management</b>
 
-* How to run the test suite
+* Check-in inventory at the beginning and end of the business day with the ability to add products during business hours.
+* See how much product you have sold during the course of the day.
 
-* Services (job queues, cache servers, search engines, etc.)
+<b>History</b>
 
-* Deployment instructions
+* Go back in time to view and edit sales figures and inventory check-ins from past business days.
+* View sales figures on a weekly basis.
 
-* ...
+<b>Hire the Developer</b>
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+*http://www.linkedin.com/pub/zack-banton/64/774/213/
+*https://angel.co/zack-banton
