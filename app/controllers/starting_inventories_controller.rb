@@ -29,7 +29,7 @@ class StartingInventoriesController < ApplicationController
   private
 
   def set_recipe_select
-    @recipe_select = Recipe.where(is_active: true).map { |r| [r.name,r.id] }
+    @recipe_select = current_user.recipes.where(is_active: true).map { |r| [r.name,r.id] }
   end
 
   def set_day
